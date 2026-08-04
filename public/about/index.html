@@ -1,0 +1,561 @@
+<!DOCTYPE html><html lang="en" class="no-js"> <head><style id="elitechnexus-logo-css">
+/* Default: fill the original .o-icon box (uses --size) */
+.o-icon.elitechnexus-logo-wrap{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+  background:transparent!important;
+  width:var(--size, 1em)!important;
+  height:var(--size, 1em)!important;
+  overflow:visible!important;
+}
+.o-icon.elitechnexus-logo-wrap .elitechnexus-logo{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  background:transparent!important;
+}
+
+/* Header — enlarge EL to read at nav-text scale */
+#site-header__logo .o-icon.elitechnexus-logo-wrap{
+  width:calc(var(--icon-size, 2rem) * 1.85)!important;
+  height:calc(var(--icon-size, 2rem) * 1.15)!important;
+  background:transparent!important;
+}
+#home-hero__caption .o-icon.elitechnexus-logo-wrap{
+  width:1.1em!important;
+  height:1.1em!important;
+}
+
+/* Workspace tabs (Shell/Browser/Editor/Planner) */
+#home-hero__flow-visual-right-nav{
+  --size: calc(var(--unit2) * .55);
+}
+#home-hero__flow-visual-right-nav .o-icon.elitechnexus-logo-wrap{
+  width:calc(var(--unit2) * .55)!important;
+  height:calc(var(--unit2) * .55)!important;
+  max-width:calc(var(--unit2) * .55)!important;
+  max-height:calc(var(--unit2) * .55)!important;
+}
+
+.home-hero__flow-visual-item-side-inner > .o-icon.elitechnexus-logo-wrap{
+  width:calc(var(--unit) * 1.75)!important;
+  height:calc(var(--unit) * 1.75)!important;
+}
+
+.home-hero__flow-visual-chat-item-image .o-icon.elitechnexus-logo-wrap{
+  width:100%!important;
+  height:100%!important;
+}
+
+#site-menu__logo{
+  background-image:url('/assets/images/elitechnexus-logo.svg?v=14')!important;
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+  background-position:left center!important;
+  background-color:transparent!important;
+}
+</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>About us | Elitechnexus</title><meta name="description" content="Elitechnexus is a global engineering bridge — Philippines HQ connecting Asia & Europe talent into US tech with proof-first placement."><meta name="keywords" content="AI coding agent, coding AI, AI software engineer, SWE agent, AI coding assistant, cloud agent, parallel agent"><base href="/"><meta property="og:title" content="Who we are"><meta property="og:description" content="Elitechnexus is a global engineering bridge — Philippines HQ connecting Asia & Europe talent into US tech with proof-first placement."><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="Who we are"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Elitechnexus is a global engineering bridge — Philippines HQ connecting Asia & Europe talent into US tech with proof-first placement."><meta name="twitter:image:type" content="image/png"><meta name="twitter:image:width" content="1200"><meta name="twitter:image:height" content="630"> <meta property="og:image" content="/assets/images/elitechnexus-logo-transparent.png?v=13"> <meta name="twitter:image" content="/assets/images/elitechnexus-logo-transparent.png?v=13"> <link rel="icon" href="/assets/images/elitechnexus-logo-transparent.png?v=13" type="image/x-icon" sizes="48x48"><link rel="icon" href="/assets/images/elitechnexus-logo-transparent.png?v=13" type="image/png" sizes="568x568"><link rel="apple-touch-icon" href="/assets/images/elitechnexus-logo-transparent.png?v=13" type="image/png" sizes="180x180"><link rel="canonical" href="/about/"><link rel="stylesheet" href="/_astro/_caseStudy_.C5ufd_-D.css"><script type="module" src="/_astro/hoisted.Dadqo-kW.js"></script><style id="elitechnexus-bento-layout-css">
+/* Item 01: keep title + subtitle together at top (like original Devin card) */
+@media (min-width: 940px) {
+  #home-bento__item-01 .home-bento__item-text {
+    position: absolute !important;
+    top: 8% !important;
+    left: 10% !important;
+    right: 18% !important;
+    z-index: 3 !important;
+    padding: 0 !important;
+  }
+  #home-bento__item-01 .home-bento__item-title {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  #home-bento__item-01 .home-bento__item-subtitle {
+    margin-top: 0.85em !important;
+    max-width: 34ch !important;
+    line-height: 1.45 !important;
+  }
+}
+
+/* Item 02: keep copy on the left; don't spill over the phone art */
+@media (min-width: 940px) {
+  #home-bento__item-02 .home-bento__item-text {
+    position: absolute !important;
+    top: 32% !important;
+    left: 10% !important;
+    width: 42% !important;
+    max-width: 42% !important;
+    z-index: 3 !important;
+    padding: 0 !important;
+  }
+  #home-bento__item-02 .home-bento__item-subtitle {
+    margin-top: 0.85em !important;
+    line-height: 1.45 !important;
+  }
+  #home-bento__item-02 .home-bento__item-image-main-wrapper {
+    width: 38% !important;
+    z-index: 1 !important;
+  }
+  #home-bento__item-02 .home-bento__item-image-main-wrapper img {
+    object-fit: contain !important;
+    object-position: right bottom !important;
+  }
+}
+
+/* Item 03: keep text block clean at top-left */
+@media (min-width: 940px) {
+  #home-bento__item-03 .home-bento__item-text {
+    max-width: 48% !important;
+    z-index: 3 !important;
+  }
+  #home-bento__item-03 .home-bento__item-subtitle {
+    line-height: 1.45 !important;
+  }
+}
+
+/* Logo: never show a black plate behind EL */
+#site-header__logo .o-icon.elitechnexus-logo-wrap,
+#site-header__logo .elitechnexus-logo,
+.o-icon.elitechnexus-logo-wrap,
+.elitechnexus-logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+#site-header__logo .elitechnexus-logo {
+  mix-blend-mode: normal !important;
+}
+</style><style id="elitechnexus-logo-no-black">
+#site-header__logo, #site-header__logo .o-icon, #site-header__logo img,
+#site-menu__logo {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+#site-header__logo img.elitechnexus-logo {
+  background: transparent !important;
+  filter: none !important;
+}
+#site-menu__logo {
+  background-image: url('/assets/images/elitechnexus-logo.svg?v=14') !important;
+  background-color: transparent !important;
+}
+</style><style id="elitechnexus-bento01-overlay-css">
+
+/* Image now includes Use-when row — hide HTML overlay to prevent double text */
+
+#home-bento__item-01-visual-wrapper {
+
+  display: none !important;
+
+  visibility: hidden !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+
+}
+
+</style>
+
+<style id="elitechnexus-simple-page-css">
+
+.elite-page {
+
+  padding: clamp(6rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+
+  color: #d7e3ef;
+
+}
+
+.elite-page__caption {
+
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #7b92a8;
+
+  margin: 0 0 0.75rem;
+
+}
+
+.elite-page__title {
+
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+
+  line-height: 1.1;
+
+  font-weight: 600;
+
+  color: #f2f6fb;
+
+  margin: 0 0 1.25rem;
+
+}
+
+.elite-page__lead {
+
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+
+  line-height: 1.55;
+
+  color: #a8bbcc;
+
+  max-width: 52ch;
+
+  margin: 0 0 2.5rem;
+
+}
+
+.elite-page__grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 1.25rem;
+
+  margin: 0 0 2.5rem;
+
+}
+
+.elite-page__card {
+
+  background: rgba(18, 32, 52, 0.85);
+
+  border: 1px solid rgba(93, 120, 150, 0.25);
+
+  border-radius: 1rem;
+
+  padding: 1.35rem 1.4rem;
+
+}
+
+.elite-page__card h3 {
+
+  margin: 0 0 0.65rem;
+
+  color: #f2f6fb;
+
+  font-size: 1.15rem;
+
+}
+
+.elite-page__card p,
+
+.elite-page__card li {
+
+  margin: 0;
+
+  color: #a8bbcc;
+
+  line-height: 1.5;
+
+}
+
+.elite-page__card a { color: #5eead4; }
+
+.elite-page__card--link {
+
+  text-decoration: none;
+
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+}
+
+.elite-page__card--link:hover {
+
+  border-color: rgba(94, 234, 212, 0.45);
+
+  transform: translateY(-2px);
+
+}
+
+.elite-page__list {
+
+  margin: 0 0 0.85rem;
+
+  padding-left: 1.1rem;
+
+  color: #a8bbcc;
+
+}
+
+.elite-page__list li { margin-bottom: 0.35rem; }
+
+.elite-page__cta-row {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.85rem;
+
+  margin: 0;
+
+}
+
+.elite-page__btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0.85rem 1.4rem;
+
+  border-radius: 999px;
+
+  background: #e8eef8;
+
+  color: #0b1a2e !important;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+}
+
+.elite-page__btn--ghost {
+
+  background: transparent;
+
+  color: #d7e3ef !important;
+
+  border: 1px solid rgba(215, 227, 239, 0.35);
+
+}
+
+</style><script id="elitechnexus-fullnav-fix">
+(function () {
+  var FULL = { contact: 1, login: 1, about: 1, careers: 1, blog: 1, docs: 1, deepwiki: 1 };
+  function pathOf(href) {
+    try {
+      var u = new URL(href, window.location.origin);
+      if (u.origin !== window.location.origin) return null;
+      return u.pathname.replace(/^\/|\/$/g, "");
+    } catch (e) { return null; }
+  }
+  document.addEventListener("click", function (e) {
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    var a = e.target && e.target.closest ? e.target.closest("a") : null;
+    if (!a) return;
+    var href = a.getAttribute("href");
+    if (!href || href.indexOf("mailto:") === 0 || href.indexOf("tel:") === 0) return;
+    var p = pathOf(a.href);
+    if (!p || !FULL[p]) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.assign(a.href);
+  }, true);
+})();
+</script><style id="elitechnexus-toolbar-css">
+#site-header{
+  --site-header-nav-padding: calc(var(--gutter) * .85) !important;
+  --icon-size: calc(var(--space-l) * 1.15) !important;
+}
+@media (max-width: 939.98px){
+  #site-header{
+    --icon-size: calc(var(--space-m) * 1.25) !important;
+    --site-header-nav-padding: calc(var(--gutter) * .55) !important;
+  }
+}
+#site-header__nav{
+  min-height: 3.85rem !important;
+  align-items: center !important;
+  display: flex !important;
+  width: 100% !important;
+}
+#site-header__nav-bg:before,
+#site-header__nav-bg:after{
+  border-radius: 999px !important;
+}
+/* Hide "View more" cluster only — NOT the right-side buttons */
+#site-header__nav-list-02{
+  display: none !important;
+}
+#site-header__nav-list-01 > li[data-id="pricing"],
+#site-menu__nav-01 > li[data-id="pricing"]{
+  display: none !important;
+}
+/* Right cluster: Contact · Login · Get started — always visible */
+#site-header__button-list{
+  display: flex !important;
+  margin-left: auto !important;
+  align-items: center !important;
+  gap: clamp(0.85rem, 1.5vw, 1.35rem) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 6 !important;
+  flex-shrink: 0 !important;
+}
+#site-header__button-contact{
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  color: currentColor;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 550;
+  line-height: 1;
+  white-space: nowrap;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+#site-header__button-contact:hover{ opacity: 0.85 !important; }
+#site-header__button-transparent{
+  display: inline-flex !important;
+  margin-right: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+#site-header__button-cta{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.78em 1.35em !important;
+  min-height: 2.55em !important;
+  border-radius: 999px !important;
+  line-height: 1 !important;
+}
+</style><style id="elitechnexus-standalone-page-css">
+/* Standalone pages are not in SPA pageList — force them visible */
+#contact.page,
+#login.page,
+#about.page,
+#careers.page,
+#blog.page,
+#docs.page,
+#deepwiki.page{
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 70vh;
+}
+#viewport-wrapper,
+#pages-container{
+  min-height: 70vh;
+}
+</style><script id="elitechnexus-auth-hash-redirect">
+(function () {
+  var h = (location.hash || "").toLowerCase();
+  if (h === "#/register" || h === "#register" || h === "#/login" || h === "#login") {
+    location.replace("/login" + (h.indexOf("login") >= 0 ? "#login" : "#register"));
+  }
+})();
+</script><style id="elitechnexus-footer-slogan-css">
+#site-footer__top-left-title{
+  font-size:calc(var(--h1) * 0.62) !important;
+  line-height:1.18 !important;
+  overflow:visible !important;
+}
+#site-footer__top-left-title .o-text-gradient{
+  overflow:visible !important;
+  display:inline-block;
+  padding-bottom:0.06em;
+}
+#site-footer__top-left-title .elite-footer-line{
+  font-size:1em;
+}
+#site-footer__top-left-title .elite-footer-brand{
+  font-size:1.32em;
+  line-height:1.12;
+  display:inline-block;
+  margin-top:0.08em;
+}
+</style></head> <body> <canvas id="canvas"></canvas> <div id="ui"> <header id="site-header"> <div id="site-header__container"> <a id="site-header__logo" href="/"> <div class="o-icon elitechnexus-logo-wrap"><img src="/assets/images/elitechnexus-logo.svg?v=14" alt="Elitechnexus" class="elitechnexus-logo"/></div> </a> <nav id="site-header__nav"> <div id="site-header__nav-bg"></div> <ul id="site-header__nav-list-01"> <li class="site-header__nav-item" data-id="home"> <a href="/"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Home</div> </a> </li> <li class="site-header__nav-item" data-id="enterprise"> <a href="/enterprise"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Enterprise</div> </a> </li>  <li class="site-header__nav-item" data-id="customers"> <a href="/customers"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Customers</div> </a> </li> </ul> <ul id="site-header__nav-list-02" aria-hidden="true"></ul> <div id="site-header__button-list"> <a id="site-header__button-contact" href="/contact"> <div id="site-header__button-contact-inner"> <span>Contact</span> </div> </a> <a id="site-header__button-transparent" href="/login#login"> <div id="site-header__button-transparent-inner-wrapper"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> <span>Login</span> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> </div> </a> <a id="site-header__button-cta" href="/login"> <span>Get started</span> </a> <div id="site-header__button-menu"></div> </div> </nav> </div> <div id="site-menu"> <div id="site-menu__bg"></div> <div id="site-menu__content"> <ul id="site-menu__nav-01"> <li data-id="home"> <a href="/"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Home</span> </a> </li> <li data-id="enterprise"> <a href="/enterprise"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Enterprise</span> </a> </li>  <li data-id="customers"> <a href="/customers"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Customers</span> </a> </li> </ul> <ul id="site-menu__nav-02"> <li> <a href="/contact"> <span>Contact</span> </a> </li> </ul> <a id="site-menu__btn-1" href="/login"> <div>Get started</div> </a> <a id="site-menu__btn-2" href="/login"> <div> <span>Login</span> <span><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div></span> </div> </a> </div> </div> </header>  <div id="vimeo-overlay" data-code="1037751640"> <button id="vimeo-overlay__close-button"><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="2" y1="2" x2="14" y2="14"></line> <line x1="14" y1="2" x2="2" y2="14"></line> </svg> </div></button> <div id="vimeo-overlay__bg"></div> <div id="vimeo-overlay__container" class="o-container"> <div id="vimeo-overlay__content"> <div id="vimeo-overlay__content-inner"> <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" allow="fullscreen; picture-in-picture" allowfullscreen></iframe> </div> </div> </div> </div> <div id="customers-overlay"> <button id="customers-overlay__close-button"><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="2" y1="2" x2="14" y2="14"></line> <line x1="14" y1="2" x2="2" y2="14"></line> </svg> </div></button> <div id="customers-overlay__bg"></div> <canvas id="customers-overlay__slider"></canvas> <div id="customers-overlay__content"> <div id="customers-overlay__content-inner"> <div class="o-prose"> <div class="o-icon"> <svg viewBox="0 0 60 38"> <path d="M18.068,3c-2.858,0-5.291,1.126-7.125,3.052-.129-.005-.259-.008-.39-.008-3.73,0-7.229,2.154-8.937,5.498-.746,1.46-1.023,3.032-1.109,4.63-.052.959-.035,1.927-.017,2.889h0c.009.478.017.954.017,1.426v13.772h7.657s.006-6.784,0-12.617c0-1.34-.005-2.63-.008-3.777h0c-.006-2.214-.011-3.893.008-4.367.136-3.397,1.057-5.619,2.777-7.436,5.7.004,9.391,3.922,9.597,10.156.047,1.431.062,9.09.062,9.09v8.949h7.657v-12.099c0-.34,0-.676,0-1.007v-.005c.002-3.228.004-6.014-.225-7.991-.706-6.09-4.398-10.156-9.966-10.156ZM58.455,18.941c.017.96.035,1.928-.017,2.886-.086,1.599-.363,3.17-1.109,4.63-1.708,3.345-5.206,5.498-8.937,5.498-.13,0-.261-.003-.389-.008-1.834,1.927-4.267,3.052-7.125,3.052-5.568,0-9.26-4.065-9.965-10.156-.229-1.978-.227-4.766-.225-7.996,0-.08,0-.16,0-.241,0-.253,0-.509,0-.767V3.742l7.652-.007v8.949c0,4.114.02,7.666.067,9.098.206,6.234,3.896,10.151,9.596,10.156,1.72-1.817,2.642-4.039,2.777-7.436.019-.474.014-2.153.008-4.367-.003-1.147-.007-2.437-.008-3.777-.006-5.833,0-12.617,0-12.617h7.657v13.772c0,.472.009.948.017,1.426v.003Z"></path> </svg> </div> <h2 class="h1">How Nubank refactors millions of lines of code to improve engineering efficiency with Elitechnexus</h2> <div class="table"> <div> <div>8x</div> <div>engineering time efficiency gain</div> </div> <div> <div>20x</div> <div>cost savings</div> </div> </div> <div id="vimeo-preview"> <div id="vimeo-preview__image-wrapper"> <img alt="Vimeo">   <div id="icon-preview"></div> </div> </div> <h2>Overview</h2>
+<p>One of Nubank’s most critical, company-wide projects for 2023-2024 was a migration of their core ETL — an 8 year old, multi-million lines of code monolith — to sub-modules. To handle such a large refactor, their only option was a multi-year effort that distributed repetitive refactoring work across over one thousand of their engineers. With Elitechnexus, however, this changed: engineers were able to delegate Elitechnexus to handle their migrations and achieve a 12x efficiency improvement in terms of engineering hours saved, and over 20x cost savings. Among others, Data, Collections, and Risk business units verified and completed their migrations in weeks instead of months or years.</p>
+<h2>The Problem</h2>
+<p>Nubank was born into the tradition of centralized ETL FinServ architectures. To date, the monolith architecture had worked well for Nubank — it enabled the developer autonomy and flexibility that carried them through their hypergrowth phases. After 8 years, however, Nubank’s sheer volume of customer growth, as well as geographic and product expansion beyond their original credit card business, led to an entangled, behemoth ETL with countless cross-dependencies and no clear path to continuing to scale.</p>
+<p>For Nubankers, business critical data transformations started taking increasingly long to run, with chains of dependencies as deep as 70 and insufficient formal agreements on who was responsible for maintaining what. As the company continued to grow, it became clear that the ETL would be a primary bottleneck to scale.</p>
+<blockquote>
+<p>Nubank concluded that there was an urgent need to split up their monolithic ETL repository, amassing over 6 million lines of code, into smaller, more flexible sub-modules.</p>
+</blockquote>
+<p>Nubank’s code migration was filled with the monotonous, repetitive work that engineers dread. Moving each data class implementation from one architecture to another while tracing imports correctly, performing multiple delicate refactoring steps, and accounting for any number of edge cases was highly tedious, even to do just once or twice. At Nubank’s scale, however, the total migration scope involved more than 1,000 engineers moving ~100,000 data class implementations over an expected timeline of 18 months.</p>
+<p>In a world where engineering resources are scarce, such large-scale migrations and modernizations become massively expensive, time-consuming projects that distract from any engineering team’s core mission: building better products for customers. Unfortunately, this is the reality for many of the world’s largest organizations.</p>
+<h2>The Decision: an army of Elitechnexus to tackle subtasks in parallel</h2>
+<p>At project outset in 2023, Nubank had no choice but to rely on their engineers to perform code changes manually. Migrating one data class was a highly discretionary task, with multiple variations, edge cases, and ad hoc decision-making — far too complex to be scriptable, but high-volume enough to be a significant manual effort.</p>
+<p>Within weeks of Elitechnexus’s launch, Nubank identified a clear opportunity to accelerate their refactor at a fraction of the engineering hours. Migration or large refactoring tasks are often fantastic projects for Elitechnexus: after investing a small, fixed cost to teach Elitechnexus how to approach sub-tasks, Elitechnexus can go and complete the migration autonomously. A human is kept in the loop just to manage the project and approve Elitechnexus’s changes.</p>
+<h2>The Solution: Custom ETL Migration Elitechnexus</h2>
+<p>A task of this magnitude, with the vast number of variations that it had, was a ripe opportunity for fine-tuning. The Nubank team helped to collect examples of previous migrations their engineers had done manually, some of which were fed to Elitechnexus for fine-tuning. The rest were used to create a <a href="mailto:steven.miller@elitechnexus.com" target="_blank">benchmark evaluation set.</a> Against this evaluation set, we observed a <b>doubling of Elitechnexus’s task completion scores after fine-tuning, as well as a 4x improvement in task speed. Roughly 40 minutes per sub-task dropped to 10,</b> which made the whole migration start to look much cheaper and less time-consuming, allowing the company to devote more energy to new business and new value creation instead.</p>
+<p>Elitechnexus contributed to its own speed improvements by building itself classical tools and scripts it would later use on the most common, mechanical components of the migration. For instance, detecting the country extension of a data class (either ‘br’, ‘co’, or ‘mx’) based on its file path was a few-step process for each sub-task. Elitechnexus’s script automatically turned this into a single step executable — improvements from which added up immensely across all tens of thousands of sub-tasks.</p>
+<p>There is also a compounding advantage on Elitechnexus’s learning. In the first weeks, it was common to see outstanding errors to fix, or small things Elitechnexus wasn’t sure how to solve. But as Elitechnexus saw more examples and gained familiarity with the task, it started to avoid rabbit holes more often and find faster solutions to previously-seen errors and edge cases. Much like a human engineer, we observed obvious speed and reliability improvements with every day Elitechnexus worked on the migration.</p>
+<div class="highlight">
+    <span>Results:</span>
+    <span>Delivering an 8-12x faster migration, lifting a burden from every engineer, and slashing migration costs by 20x.</span>
+</div>
+<blockquote>
+<p>“Elitechnexus provided an easy way to reduce the number of engineering hours for the migration, in a way that was more stable and less prone to human error. Rather than engineers having to work across several files and complete an entire migration task 100%, they could just review Elitechnexus’s changes, make minor adjustments, then merge their PR”</p>
+<p>Jose Carlos Castro, Senior Product Manager</p>
+</blockquote>
+<div class="highlight">
+    <span>8-12x efficiency gains</span>
+    <span>This is calculated by comparing the typical engineering hours required to complete a data class migration task against the total engineering hours spent prompting and reviewing Elitechnexus’s work on the same task.</span>
+</div>
+<div class="highlight">
+    <span>Over 20x cost savings on scope of the migration delegated to Elitechnexus</span>
+    <span>This is calculated by comparing the cost of running Elitechnexus versus the hourly cost of an engineer completing that task. The significant savings are heavily driven by speed of task execution and cost effectiveness of Elitechnexus relative to human engineering time – it does not even consider the value captured by completing the entire project months ahead of schedule!</span>
+</div>
+<div class="highlight">
+    <span>Fewer dreaded migration tasks for Nubank engineers</span>
+</div> </div> </div> </div> </div> <div id="viewport-wrapper"> <div id="pages-container">   <div id="about" class="page">
+
+  <section class="elite-page o-section">
+
+    <div class="o-container">
+
+      <h5 class="elite-page__caption">Who we are</h5>
+
+      <h1 class="elite-page__title">About <span class="o-text-gradient">Elitechnexus</span></h1>
+
+      
+
+      <p class="elite-page__lead">Elitechnexus LLC helps people and companies turn skills into full-time jobs, paid projects, and lasting income — connecting global talent into the US tech market with proof, preparation, and placement.</p>
+
+      <div class="elite-page__grid">
+
+        <div class="elite-page__card">
+
+          <h3>Proof first</h3>
+
+          <p>Every candidate builds evidence through live coding, architecture design, and algorithmic screening before employers commit.</p>
+
+        </div>
+
+        <div class="elite-page__card">
+
+          <h3>Philippines HQ</h3>
+
+          <p>From our Philippines headquarters we run compliant onboarding, payroll frameworks, and cross-border placement for full-time and project work.</p>
+
+        </div>
+
+        <div class="elite-page__card">
+
+          <h3>Who we serve</h3>
+
+          <p>Engineers seeking US-facing roles and companies that need vetted global talent without the usual hiring friction.</p>
+
+        </div>
+
+      </div>
+
+      <p class="elite-page__cta-row"><a class="elite-page__btn" href="/contact">Contact us</a></p>
+
+    
+
+    </div>
+
+  </section>
+
+</div> <div id="site-footer" class="o-section"> <div class="o-container"> <div id="site-footer__top" class="o-grid"> <div id="site-footer__top-left"> <h3 id="site-footer__top-left-title"><span class="o-text-gradient"><span class="elite-footer-line">Let's Build Together with</span><br><span class="elite-footer-brand">Elitechnexus LLC!</span></span></h3> <a id="site-footer__top-left-button" href="/login"> <span>Get started</span> </a> </div> <div id="site-footer__top-right"> <div id="site-footer__top-right-wrapper"> <h4 class="site-footer__top-right-title">Elitechnexus LLC — Headquarters</h4> <h4 class="site-footer__top-right-title is-enterprise">Based in the Philippines</h4> <p id="site-footer__top-right-subtitle">Full-time jobs, paid projects, and global engineering talent — with proof first. Inquiries: steven.miller@elitechnexus.com | +1 (339) 365-7217</p> <a class="site-footer__top-right-link" href="/enterprise">Learn about Elitechnexus Enterprise</a> <a class="site-footer__top-right-link is-enterprise" href="/contact" title="+1 (339) 365-7217 · steven.miller@elitechnexus.com · Philippines">Contact us</a> </div> </div> </div> <div id="site-footer__bottom" class="o-grid"> <div id="site-footer__bottom-left"> <a href="mailto:steven.miller@elitechnexus.com" target="_blank">steven.miller@elitechnexus.com</a> <a href="tel:+13393657217">+1 (339) 365-7217</a> </div> <div id="site-footer__bottom-right"> <a href="mailto:steven.miller@elitechnexus.com" target="_blank"> <span class="site-footer__bottom-right-item-inner-wrapper"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> <span>Linkedin</span> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> </span> </a> <span>+1 (339) 365-7217</span> <a href="mailto:steven.miller@elitechnexus.com" target="_blank"> <span class="site-footer__bottom-right-item-inner-wrapper"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> <span>X (Twitter)</span> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> </span> </a> </div> </div> </div> </div> </div> <div id="scroll-indicator"> <div id="scroll-indicator-bar"></div> </div> <div id="preloader"></div> </div>  </body> </html>

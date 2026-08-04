@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 72" fill="none">
+  <defs>
+    <linearGradient id="el" x1="8" y1="64" x2="112" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EEAD4"/>
+      <stop offset="0.55" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <!-- Italic EL mark -->
+  <g transform="skewX(-12) translate(10,0)">
+    <!-- E -->
+    <rect x="8" y="12" width="42" height="10" rx="2" fill="url(#el)"/>
+    <rect x="8" y="31" width="34" height="10" rx="2" fill="url(#el)"/>
+    <rect x="8" y="50" width="42" height="10" rx="2" fill="url(#el)"/>
+    <!-- L -->
+    <rect x="58" y="12" width="12" height="48" rx="2" fill="url(#el)"/>
+    <rect x="58" y="50" width="42" height="10" rx="2" fill="url(#el)"/>
+  </g>
+</svg>

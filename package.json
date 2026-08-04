@@ -1,0 +1,21 @@
+{
+  "name": "elitechnexus-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Elitechnexus company website (Philippines) — local static site",
+  "scripts": {
+    "dev": "node scripts/server.mjs",
+    "start": "node scripts/server.mjs",
+    "mirror": "node scripts/mirror.mjs",
+    "mirror:3d": "node scripts/mirror-visual-3d.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1",
+    "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "jimp": "^1.6.1",
+    "sharp": "^0.35.3",
+    "three": "^0.185.1"
+  }
+}

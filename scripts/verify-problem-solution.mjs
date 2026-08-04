@@ -1,0 +1,12 @@
+import fs from "fs";
+const h = fs.readFileSync("public/index.html", "utf8");
+const vp = h.indexOf('id="viewport-wrapper"');
+const early = h.slice(0, vp).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+const p = early.indexOf("The Problem");
+const s = early.indexOf("The Solution");
+const r = early.indexOf("Results:");
+console.log(early.slice(p, p + 380));
+console.log("---");
+console.log(early.slice(s, s + 420));
+console.log("---");
+console.log(early.slice(r, r + 200));

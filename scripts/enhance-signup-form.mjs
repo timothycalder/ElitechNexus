@@ -1,0 +1,798 @@
+/**
+ * Enhanced /login signup: email, username, password, phone, location
+ * with country autocomplete + validation alert + mailto to steven.miller@...
+ */
+import fs from "fs";
+
+const EMAIL = "steven.miller@elitechnexus.com";
+const PHONE_DISPLAY = "+1 (339) 365-7217";
+
+const COUNTRIES = [
+  "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan",
+  "Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi",
+  "Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic",
+  "Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
+  "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia",
+  "Fiji","Finland","France",
+  "Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana",
+  "Haiti","Honduras","Hungary",
+  "Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy",
+  "Ivory Coast",
+  "Jamaica","Japan","Jordan",
+  "Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan",
+  "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
+  "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar",
+  "Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway",
+  "Oman",
+  "Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
+  "Qatar",
+  "Romania","Russia","Rwanda",
+  "Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria",
+  "Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu",
+  "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan",
+  "Vanuatu","Vatican City","Venezuela","Vietnam",
+  "Yemen",
+  "Zambia","Zimbabwe",
+];
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up | Elitechnexus</title>
+<meta name="description" content="Sign up or log in to the Elitechnexus portal — global engineering talent and US teams.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700&display=swap");
+
+  :root {
+    --bg0: #0a1320;
+    --bg1: #122036;
+    --card: #f7fafc;
+    --ink: #0f1a2c;
+    --muted: #5b6b7c;
+    --line: #d5dee8;
+    --accent: #0d9488;
+    --accent-2: #0284c7;
+    --teal: #5eead4;
+    --danger: #dc2626;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 55% at 12% 8%, rgba(45,212,191,.2), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(56,189,248,.16), transparent 50%),
+      linear-gradient(165deg, var(--bg0), var(--bg1) 55%, #08101a);
+  }
+  a { color: inherit; }
+
+  .top {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    backdrop-filter: blur(10px);
+    background: rgba(8,16,30,.35);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .top__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    text-decoration: none;
+    color: #e8f0f8;
+    font-family: Syne, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .top__brand img { width: 2.1rem; height: 2.1rem; }
+  .top__links { display: flex; align-items: center; gap: 1rem; }
+  .top__links a {
+    text-decoration: none;
+    color: #c5d4e4;
+    font-size: .92rem;
+    font-weight: 600;
+  }
+  .top__links a:hover { color: var(--teal); }
+
+  .auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5.5rem 1.15rem 2.5rem;
+  }
+  .shell { width: min(100%, 28.5rem); }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .brand img {
+    width: 3.35rem;
+    height: 3.35rem;
+    filter: drop-shadow(0 8px 20px rgba(56,189,248,.28));
+  }
+  .brand span {
+    color: #e8f0f8;
+    font-family: Syne, sans-serif;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 1.35rem;
+    padding: clamp(1.45rem, 4vw, 2rem) clamp(1.2rem, 3.5vw, 1.75rem) 1.45rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,.38), 0 0 0 1px rgba(255,255,255,.06);
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .35rem;
+    padding: .3rem;
+    background: #e8eef4;
+    border-radius: 999px;
+    margin-bottom: 1.3rem;
+  }
+  .tab {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-weight: 650;
+    font-size: .92rem;
+    padding: .7rem .85rem;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .tab.is-active {
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 2px 8px rgba(15,26,44,.08);
+  }
+
+  h1 {
+    margin: 0 0 .35rem;
+    text-align: center;
+    font-family: Syne, sans-serif;
+    font-size: clamp(1.55rem, 4vw, 1.85rem);
+    line-height: 1.15;
+  }
+  .sub {
+    margin: 0 0 1.3rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.45;
+  }
+
+  form { display: grid; gap: .85rem; }
+  label { display: grid; gap: .35rem; position: relative; }
+  .label {
+    font-size: .78rem;
+    font-weight: 700;
+    color: #334155;
+    letter-spacing: .02em;
+  }
+  .label em {
+    font-style: normal;
+    color: var(--danger);
+    margin-left: .15rem;
+  }
+  input[type="email"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="password"] {
+    width: 100%;
+    border: 1.5px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: .85rem;
+    padding: .95rem 1rem;
+    font: inherit;
+    font-size: .98rem;
+    outline: none;
+  }
+  input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(13,148,136,.18);
+  }
+  input.is-invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(220,38,38,.12);
+  }
+  input::placeholder { color: #94a3b8; }
+  .field-error {
+    margin: 0;
+    font-size: .75rem;
+    color: var(--danger);
+    min-height: 0;
+  }
+
+  .suggest {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + .2rem);
+    z-index: 30;
+    max-height: 12.5rem;
+    overflow: auto;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: .85rem;
+    box-shadow: 0 14px 28px rgba(15,26,44,.16);
+    padding: .35rem;
+  }
+  .suggest button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: .92rem;
+    padding: .65rem .75rem;
+    border-radius: .55rem;
+    cursor: pointer;
+  }
+  .suggest button:hover,
+  .suggest button.is-active {
+    background: #eef6f8;
+    color: #0f4c5c;
+  }
+  .suggest-empty {
+    padding: .7rem .75rem;
+    color: var(--muted);
+    font-size: .85rem;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
+  .check {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .85rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .check input { accent-color: var(--accent); }
+  .link {
+    color: var(--accent-2);
+    text-decoration: none;
+    font-size: .85rem;
+    font-weight: 650;
+  }
+  .link:hover { text-decoration: underline; }
+
+  .submit {
+    margin-top: .25rem;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 1rem 1.25rem;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 750;
+    color: #f5fafc;
+    background: linear-gradient(135deg, #0f1a2c, #16324f);
+    box-shadow: 0 10px 24px rgba(15,26,44,.22);
+  }
+  .submit:hover { filter: brightness(1.06); }
+
+  .divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: .75rem;
+    margin: 1.1rem 0;
+    color: #94a3b8;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .divider::before,
+  .divider::after {
+    content: "";
+    height: 1px;
+    background: var(--line);
+  }
+
+  .alt { display: grid; gap: .65rem; }
+  .alt a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    width: 100%;
+    border: 1.5px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: 999px;
+    padding: .9rem 1rem;
+    font-size: .95rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .alt a:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  .legal {
+    margin: 1.1rem 0 0;
+    text-align: center;
+    font-size: .75rem;
+    line-height: 1.45;
+    color: #7b8a9a;
+  }
+  .legal a {
+    color: var(--accent-2);
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .legal a:hover { text-decoration: underline; }
+
+  .switch {
+    margin: 1.15rem 0 0;
+    text-align: center;
+    color: #c5d4e4;
+    font-size: .92rem;
+  }
+  .switch button {
+    border: 0;
+    background: none;
+    color: var(--teal);
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    padding: 0;
+  }
+  .switch button:hover { text-decoration: underline; }
+
+  [hidden] { display: none !important; }
+
+  /* Success modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background: rgba(6,12,22,.62);
+    backdrop-filter: blur(4px);
+  }
+  .modal__card {
+    width: min(100%, 24rem);
+    background: #fff;
+    border-radius: 1.15rem;
+    padding: 1.6rem 1.4rem 1.35rem;
+    text-align: center;
+    box-shadow: 0 24px 50px rgba(0,0,0,.35);
+  }
+  .modal__icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: 0 auto .9rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(13,148,136,.12);
+    color: var(--accent);
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+  .modal__card h2 {
+    margin: 0 0 .55rem;
+    font-family: Syne, sans-serif;
+    font-size: 1.35rem;
+  }
+  .modal__card p {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: .95rem;
+  }
+  .modal__card button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: .85rem 1.4rem;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #0f1a2c, #16324f);
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <a class="top__brand" href="/">
+      <img src="/assets/images/elitechnexus-logo.svg?v=14" alt="">
+      Elitechnexus
+    </a>
+    <div class="top__links">
+      <a href="/contact">Contact</a>
+      <a href="/">Home</a>
+    </div>
+  </header>
+
+  <main class="auth">
+    <div class="shell">
+      <div class="brand">
+        <img src="/assets/images/elitechnexus-logo.svg?v=14" alt="Elitechnexus">
+        <span>Elitechnexus</span>
+      </div>
+
+      <div class="card">
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab is-active" data-mode="signup" role="tab" aria-selected="true">Sign up</button>
+          <button type="button" class="tab" data-mode="login" role="tab" aria-selected="false">Log in</button>
+        </div>
+
+        <div data-panel="signup">
+          <h1>Join Elitechnexus</h1>
+          <p class="sub">Create your portal account to connect with global engineering talent and US teams.</p>
+          <form id="signup-form" novalidate autocomplete="on">
+            <label>
+              <span class="label">Email <em>*</em></span>
+              <input type="email" name="email" placeholder="you@company.com" required autocomplete="email">
+              <p class="field-error" data-error-for="email"></p>
+            </label>
+            <label>
+              <span class="label">Username <em>*</em></span>
+              <input type="text" name="username" placeholder="Username" required autocomplete="username" minlength="3">
+              <p class="field-error" data-error-for="username"></p>
+            </label>
+            <label>
+              <span class="label">Password <em>*</em></span>
+              <input type="password" name="password" placeholder="At least 8 characters" required autocomplete="new-password" minlength="8">
+              <p class="field-error" data-error-for="password"></p>
+            </label>
+            <label>
+              <span class="label">Phone number <em>*</em></span>
+              <input type="tel" name="phone" placeholder="+1 555 000 0000" required autocomplete="tel">
+              <p class="field-error" data-error-for="phone"></p>
+            </label>
+            <label>
+              <span class="label">Where are you located? <em>*</em></span>
+              <input type="text" name="location" id="location-input" placeholder="Start typing a country (e.g. U)" required autocomplete="off" aria-autocomplete="list" aria-controls="location-suggest" aria-expanded="false">
+              <div class="suggest" id="location-suggest" role="listbox" hidden></div>
+              <p class="field-error" data-error-for="location"></p>
+            </label>
+            <button class="submit" type="submit">Sign up with email</button>
+          </form>
+        </div>
+
+        <div data-panel="login" hidden>
+          <h1>Welcome back</h1>
+          <p class="sub">Log in to your Elitechnexus client or talent portal.</p>
+          <form id="login-form" novalidate>
+            <label>
+              <span class="label">Email <em>*</em></span>
+              <input type="email" name="email" placeholder="Email" required autocomplete="username">
+              <p class="field-error" data-error-for="email"></p>
+            </label>
+            <label>
+              <span class="label">Password <em>*</em></span>
+              <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+              <p class="field-error" data-error-for="password"></p>
+            </label>
+            <div class="row">
+              <label class="check"><input type="checkbox" name="remember"> Remember me</label>
+              <a class="link" href="mailto:${EMAIL}?subject=Password%20reset%20request">Forgot password?</a>
+            </div>
+            <button class="submit" type="submit">Continue</button>
+          </form>
+        </div>
+
+        <div class="divider">OR</div>
+        <div class="alt">
+          <a href="mailto:${EMAIL}?subject=Portal%20access%20request">Continue with email request</a>
+          <a href="/contact">Contact Elitechnexus</a>
+        </div>
+        <p class="legal">
+          By continuing, you agree to work with Elitechnexus LLC (Philippines).
+          Questions? <a href="mailto:${EMAIL}">${EMAIL}</a> · <a href="tel:+13393657217">${PHONE_DISPLAY}</a>
+        </p>
+      </div>
+
+      <p class="switch">
+        <span data-switch-signup>Already have an account? <button type="button" data-goto="login">Log in</button></span>
+        <span data-switch-login hidden>New here? <button type="button" data-goto="signup">Sign up</button></span>
+      </p>
+    </div>
+  </main>
+
+  <div class="modal" id="success-modal" hidden>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="success-title">
+      <div class="modal__icon" aria-hidden="true">✓</div>
+      <h2 id="success-title">Thanks for signing up!</h2>
+      <p>Thanks for signing up our site, and wait for approving! We'll review your details and email you once access is ready.</p>
+      <button type="button" id="success-close">Got it</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var EMAIL_TO = ${JSON.stringify(EMAIL)};
+    var COUNTRIES = ${JSON.stringify(COUNTRIES)};
+
+    function setMode(mode) {
+      var signup = mode === "signup";
+      document.querySelectorAll(".tab").forEach(function (tab) {
+        var on = tab.getAttribute("data-mode") === mode;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      document.querySelectorAll("[data-panel]").forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-panel") !== mode;
+      });
+      var swSign = document.querySelector("[data-switch-signup]");
+      var swLog = document.querySelector("[data-switch-login]");
+      if (swSign) swSign.hidden = !signup;
+      if (swLog) swLog.hidden = signup;
+      try {
+        history.replaceState(null, "", "/login" + (signup ? "#register" : "#login"));
+      } catch (e) {}
+    }
+
+    document.querySelectorAll(".tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        setMode(tab.getAttribute("data-mode") || "signup");
+      });
+    });
+    document.querySelectorAll("[data-goto]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setMode(btn.getAttribute("data-goto") || "signup");
+      });
+    });
+
+    var hash = (location.hash || "").toLowerCase();
+    setMode(hash.indexOf("login") >= 0 ? "login" : "signup");
+
+    /* ---- Country autocomplete ---- */
+    var locInput = document.getElementById("location-input");
+    var suggest = document.getElementById("location-suggest");
+    var activeIdx = -1;
+
+    function hideSuggest() {
+      suggest.hidden = true;
+      suggest.innerHTML = "";
+      activeIdx = -1;
+      if (locInput) locInput.setAttribute("aria-expanded", "false");
+    }
+
+    function filterCountries(q) {
+      q = (q || "").trim().toLowerCase();
+      if (!q) return [];
+      return COUNTRIES.filter(function (c) {
+        return c.toLowerCase().indexOf(q) === 0;
+      }).slice(0, 10);
+    }
+
+    function renderSuggest(list) {
+      suggest.innerHTML = "";
+      if (!list.length) {
+        suggest.innerHTML = '<div class="suggest-empty">No countries match. Keep typing…</div>';
+        suggest.hidden = false;
+        locInput.setAttribute("aria-expanded", "true");
+        return;
+      }
+      list.forEach(function (name, i) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.setAttribute("role", "option");
+        btn.textContent = name;
+        btn.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+          locInput.value = name;
+          locInput.classList.remove("is-invalid");
+          clearError("location");
+          hideSuggest();
+        });
+        suggest.appendChild(btn);
+      });
+      suggest.hidden = false;
+      locInput.setAttribute("aria-expanded", "true");
+      activeIdx = -1;
+    }
+
+    if (locInput && suggest) {
+      locInput.addEventListener("input", function () {
+        var q = locInput.value;
+        if (!q.trim()) { hideSuggest(); return; }
+        renderSuggest(filterCountries(q));
+      });
+      locInput.addEventListener("keydown", function (e) {
+        var buttons = suggest.querySelectorAll("button");
+        if (suggest.hidden || !buttons.length) return;
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          activeIdx = Math.min(activeIdx + 1, buttons.length - 1);
+          buttons.forEach(function (b, i) { b.classList.toggle("is-active", i === activeIdx); });
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          activeIdx = Math.max(activeIdx - 1, 0);
+          buttons.forEach(function (b, i) { b.classList.toggle("is-active", i === activeIdx); });
+        } else if (e.key === "Enter" && activeIdx >= 0) {
+          e.preventDefault();
+          buttons[activeIdx].dispatchEvent(new Event("mousedown"));
+        } else if (e.key === "Escape") {
+          hideSuggest();
+        }
+      });
+      locInput.addEventListener("blur", function () {
+        setTimeout(hideSuggest, 150);
+      });
+    }
+
+    /* ---- Validation helpers ---- */
+    function clearError(name) {
+      var el = document.querySelector('[data-error-for="' + name + '"]');
+      if (el) el.textContent = "";
+    }
+
+    function setError(input, msg) {
+      input.classList.add("is-invalid");
+      var el = document.querySelector('[data-error-for="' + input.name + '"]');
+      if (el) el.textContent = msg;
+    }
+
+    function clearFormErrors(form) {
+      form.querySelectorAll("input").forEach(function (inp) {
+        inp.classList.remove("is-invalid");
+      });
+      form.querySelectorAll(".field-error").forEach(function (el) {
+        el.textContent = "";
+      });
+    }
+
+    function isValidEmail(v) {
+      return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);
+    }
+
+    function isValidPhone(v) {
+      var digits = v.replace(/\\D/g, "");
+      return digits.length >= 7 && digits.length <= 15;
+    }
+
+    function isKnownCountry(v) {
+      var t = v.trim().toLowerCase();
+      return COUNTRIES.some(function (c) { return c.toLowerCase() === t; });
+    }
+
+    function showSuccessModal() {
+      var modal = document.getElementById("success-modal");
+      if (!modal) return;
+      modal.hidden = false;
+      var close = document.getElementById("success-close");
+      if (close) close.focus();
+    }
+
+    document.getElementById("success-close").addEventListener("click", function () {
+      document.getElementById("success-modal").hidden = true;
+    });
+
+    function sendSignupEmail(data) {
+      var subject = encodeURIComponent("New Elitechnexus signup — " + data.username + " (" + data.location + ")");
+      var lines = [
+        "New customer signup from the Elitechnexus website:",
+        "",
+        "Email: " + data.email,
+        "Username: " + data.username,
+        "Phone: " + data.phone,
+        "Location: " + data.location,
+        "Password: (collected — do not store in plaintext; customer set a password of " + data.password.length + " characters)",
+        "",
+        "Please review and approve portal access.",
+        "",
+        "Submitted from: /login#register",
+        "Time: " + new Date().toISOString()
+      ];
+      var body = encodeURIComponent(lines.join("\\n"));
+      // Open mail client to steven.miller@elitechnexus.com with customer info
+      window.location.href = "mailto:" + EMAIL_TO + "?subject=" + subject + "&body=" + body;
+    }
+
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var form = e.target;
+      clearFormErrors(form);
+
+      var email = String(form.email.value || "").trim();
+      var username = String(form.username.value || "").trim();
+      var password = String(form.password.value || "");
+      var phone = String(form.phone.value || "").trim();
+      var location = String(form.location.value || "").trim();
+
+      var ok = true;
+
+      if (!email) { setError(form.email, "Email is required."); ok = false; }
+      else if (!isValidEmail(email)) { setError(form.email, "Enter a valid email address."); ok = false; }
+
+      if (!username) { setError(form.username, "Username is required."); ok = false; }
+      else if (username.length < 3) { setError(form.username, "Username must be at least 3 characters."); ok = false; }
+
+      if (!password) { setError(form.password, "Password is required."); ok = false; }
+      else if (password.length < 8) { setError(form.password, "Password must be at least 8 characters."); ok = false; }
+
+      if (!phone) { setError(form.phone, "Phone number is required."); ok = false; }
+      else if (!isValidPhone(phone)) { setError(form.phone, "Enter a valid phone number (7–15 digits)."); ok = false; }
+
+      if (!location) { setError(form.location, "Location is required."); ok = false; }
+      else if (!isKnownCountry(location)) {
+        setError(form.location, "Please select a country from the list (start typing, then click a match).");
+        ok = false;
+        renderSuggest(filterCountries(location));
+      }
+
+      if (!ok) {
+        var firstBad = form.querySelector(".is-invalid");
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      // Show approval message, then open email with customer info
+      alert("Thanks for signing up our site, and wait for approving!");
+      showSuccessModal();
+      sendSignupEmail({ email: email, username: username, password: password, phone: phone, location: location });
+      form.reset();
+      hideSuggest();
+    });
+
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var form = e.target;
+      clearFormErrors(form);
+      var email = String(form.email.value || "").trim();
+      var password = String(form.password.value || "");
+      var ok = true;
+      if (!email) { setError(form.email, "Email is required."); ok = false; }
+      else if (!isValidEmail(email)) { setError(form.email, "Enter a valid email address."); ok = false; }
+      if (!password) { setError(form.password, "Password is required."); ok = false; }
+      if (!ok) return;
+
+      var subject = encodeURIComponent("Portal log in request — " + email);
+      var body = encodeURIComponent(
+        ["Please help me log in to the Elitechnexus portal.", "", "Email: " + email, "", "(Submitted from /login#login)"].join("\\n")
+      );
+      window.location.href = "mailto:" + EMAIL_TO + "?subject=" + subject + "&body=" + body;
+    });
+  })();
+  </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync("public/login/index.html", html);
+console.log("updated login signup", {
+  hasPhone: html.includes('name="phone"'),
+  hasLocation: html.includes("location-input"),
+  countries: COUNTRIES.length,
+  alert: html.includes("Thanks for signing up our site"),
+  mailto: html.includes(EMAIL),
+});

@@ -1,0 +1,12 @@
+import fs from "fs";
+const h = fs.readFileSync("public/index.html", "utf8");
+const a = h.indexOf('id="site-header__nav-list-dropdown-box"');
+console.log("--- DROPDOWN ---");
+console.log(h.slice(a, a + 1200));
+console.log("\n--- LIST 01 ---");
+const b = h.indexOf('id="site-header__nav-list-01"');
+console.log(h.slice(b, b + 900));
+console.log("\n--- BUTTONS ---");
+const c = h.indexOf('id="site-header__button-list"');
+console.log(h.slice(c, c + 700));
+console.log("\ncontact strip still?", fs.readFileSync("public/contact/index.html","utf8").includes("elite-contact__strip"));

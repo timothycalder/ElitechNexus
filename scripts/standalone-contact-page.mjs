@@ -1,0 +1,702 @@
+/**
+ * Standalone /contact page modeled on NextSprintTech contact-us:
+ * hero + form grid + Get in Touch sidebar + feature cards
+ * https://nextsprinttech.com/contact-us
+ */
+import fs from "fs";
+
+const EMAIL = "steven.miller@elitechnexus.com";
+const PHONE = "+1 (339) 365-7217";
+const PHONE_TEL = "+13393657217";
+const LOCATION = "Elitechnexus LLC — Philippines";
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Elitechnexus</title>
+<meta name="description" content="Contact Elitechnexus — Philippines HQ. Email ${EMAIL} or call ${PHONE}.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
+
+  :root {
+    --bg: #07111c;
+    --bg-2: #0d1a2b;
+    --panel: rgba(16, 28, 48, 0.92);
+    --card: #101e32;
+    --ink: #e8f0f8;
+    --muted: #9bb0c4;
+    --line: rgba(120, 150, 180, 0.22);
+    --accent: #5eead4;
+    --accent-2: #38bdf8;
+    --input: rgba(8, 16, 30, 0.75);
+    --danger: #f87171;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 50% at 10% 0%, rgba(56,189,248,.14), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 95% 15%, rgba(94,234,212,.1), transparent 50%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    backdrop-filter: blur(12px);
+    background: rgba(7,17,28,.72);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .top__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    font-family: Syne, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .top__brand img { width: 2.1rem; height: 2.1rem; }
+  .top__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(.75rem, 2vw, 1.25rem);
+  }
+  .top__nav a {
+    color: #c5d4e4;
+    font-size: .92rem;
+    font-weight: 600;
+  }
+  .top__nav a:hover { color: var(--accent); }
+  .top__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .65rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .9rem;
+    color: #07131f !important;
+    background: linear-gradient(135deg, #5eead4, #38bdf8);
+  }
+
+  .container {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2rem, 4vw, 3rem);
+    text-align: center;
+  }
+  .hero__eyebrow {
+    margin: 0 0 .75rem;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #7b92a8;
+    font-weight: 650;
+  }
+  .hero h1 {
+    margin: 0 0 .9rem;
+    font-family: Syne, sans-serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    line-height: 1.08;
+    font-weight: 800;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #5eead4, #38bdf8 55%, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p {
+    margin: 0 auto;
+    max-width: 42rem;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+    line-height: 1.55;
+  }
+
+  /* Phone / Email / Address strip — NextSprint-style contact chips */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+  }
+  .strip__item {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.1rem;
+    padding: 1.25rem 1.2rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .strip__item::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, #5eead4, #38bdf8);
+  }
+  .strip__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: .7rem;
+    display: grid;
+    place-items: center;
+    margin-bottom: .85rem;
+    background: rgba(94,234,212,.12);
+    border: 1px solid rgba(94,234,212,.22);
+    color: var(--accent);
+  }
+  .strip__icon svg { width: 1.15rem; height: 1.15rem; }
+  .strip__label {
+    margin: 0 0 .2rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #7b92a8;
+    font-weight: 700;
+  }
+  .strip__hint {
+    margin: 0 0 .55rem;
+    color: var(--muted);
+    font-size: .88rem;
+  }
+  .strip__value {
+    display: block;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: #f2f6fb;
+    word-break: break-word;
+  }
+  a.strip__value:hover { color: var(--accent); }
+  .strip__sub {
+    margin: .35rem 0 0;
+    font-size: .8rem;
+    color: #7b92a8;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, .85fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: start;
+    padding-bottom: clamp(3rem, 7vw, 5rem);
+  }
+
+  .form-card,
+  .info-card,
+  .feature {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+  }
+  .form-card { padding: clamp(1.35rem, 3vw, 1.85rem); }
+  .form-card h2 {
+    margin: 0 0 1.25rem;
+    font-family: Syne, sans-serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  }
+
+  .status {
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    margin: 0 0 1rem;
+    padding: .85rem 1rem;
+    border-radius: .85rem;
+    font-size: .9rem;
+    line-height: 1.4;
+  }
+  .status.success {
+    background: rgba(94,234,212,.12);
+    border: 1px solid rgba(94,234,212,.28);
+    color: #b7f7eb;
+  }
+  .status.error {
+    background: rgba(248,113,113,.12);
+    border: 1px solid rgba(248,113,113,.28);
+    color: #fecaca;
+  }
+  .status.info {
+    background: rgba(56,189,248,.12);
+    border: 1px solid rgba(56,189,248,.28);
+    color: #bae6fd;
+  }
+
+  .form { display: grid; gap: 1rem; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field { display: grid; gap: .4rem; }
+  .label {
+    font-size: .82rem;
+    font-weight: 650;
+    color: #c5d4e4;
+  }
+  .label em {
+    font-style: normal;
+    color: var(--accent);
+    margin-left: .15rem;
+  }
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    border: 1px solid rgba(130,160,190,.28);
+    background: var(--input);
+    color: var(--ink);
+    border-radius: .75rem;
+    padding: .85rem .95rem;
+    font: inherit;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .textarea { min-height: 8.5rem; resize: vertical; line-height: 1.45; }
+  .select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #7b92a8 50%), linear-gradient(135deg, #7b92a8 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.2rem;
+  }
+  .select option { background: #122034; color: #e8f0f8; }
+  .input::placeholder,
+  .textarea::placeholder { color: #6f8499; }
+  .input:focus,
+  .select:focus,
+  .textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(94,234,212,.2);
+  }
+  .input.is-invalid,
+  .select.is-invalid,
+  .textarea.is-invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(248,113,113,.15);
+  }
+  .field-error {
+    margin: 0;
+    min-height: .9rem;
+    font-size: .75rem;
+    color: var(--danger);
+  }
+
+  .submit {
+    margin-top: .15rem;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    padding: .95rem 1.55rem;
+    border-radius: .8rem;
+    font: inherit;
+    font-weight: 750;
+    font-size: .98rem;
+    color: #07131f;
+    background: linear-gradient(135deg, #5eead4 0%, #38bdf8 55%, #60a5fa 100%);
+    box-shadow: 0 8px 28px rgba(56,189,248,.22);
+    transition: transform .15s ease, filter .15s ease;
+  }
+  .submit:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .submit:disabled { opacity: .7; cursor: wait; transform: none; }
+  .note {
+    margin: .25rem 0 0;
+    font-size: .8rem;
+    color: #7b92a8;
+  }
+
+  .aside { display: grid; gap: 1rem; }
+  .info-card { padding: 1.35rem 1.25rem; }
+  .info-card h3 {
+    margin: 0 0 .45rem;
+    font-family: Syne, sans-serif;
+    font-size: 1.25rem;
+  }
+  .info-card > p {
+    margin: 0 0 1.15rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: .95rem;
+  }
+  .info-list { display: grid; gap: .95rem; }
+  .info-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .8rem;
+    align-items: start;
+  }
+  .info-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: .65rem;
+    display: grid;
+    place-items: center;
+    background: rgba(56,189,248,.12);
+    border: 1px solid rgba(56,189,248,.22);
+    color: var(--accent-2);
+  }
+  .info-icon svg { width: 1.1rem; height: 1.1rem; }
+  .info-label {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #7b92a8;
+    font-weight: 700;
+    margin-bottom: .2rem;
+  }
+  .info-value {
+    font-weight: 650;
+    color: #f2f6fb;
+    word-break: break-word;
+  }
+  a.info-value:hover { color: var(--accent); }
+
+  .feature {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .8rem;
+    align-items: start;
+    padding: 1.05rem 1.15rem;
+  }
+  .feature-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: .6rem;
+    display: grid;
+    place-items: center;
+    background: rgba(94,234,212,.12);
+    color: var(--accent);
+  }
+  .feature-icon svg { width: 1.05rem; height: 1.05rem; }
+  .feature h4 {
+    margin: 0 0 .2rem;
+    font-size: .98rem;
+  }
+  .feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .88rem;
+    line-height: 1.4;
+  }
+
+  .footer {
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 1.35rem clamp(1rem, 4vw, 2rem) 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem 1.25rem;
+    justify-content: space-between;
+    color: #7b92a8;
+    font-size: .85rem;
+  }
+  .footer a:hover { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .strip { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; }
+    .submit { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <a class="top__brand" href="/">
+      <img src="/assets/images/elitechnexus-logo.svg?v=14" alt="">
+      Elitechnexus
+    </a>
+    <nav class="top__nav">
+      <a href="/">Home</a>
+      <a href="/enterprise">Enterprise</a>
+      <a href="/login">Login</a>
+      <a class="top__cta" href="mailto:${EMAIL}">Get started</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Contact</p>
+      <h1>Let's Build Something <span>Amazing</span></h1>
+      <p>Tell us about your hiring needs or career goals — we'll get back to you within 24 hours with a clear next step.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="strip" aria-label="Contact details">
+      <div class="strip__item">
+        <div class="strip__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 3.5c.5-.5 1.3-.6 1.9-.2l2.2 1.4c.6.4.8 1.2.5 1.9l-.9 2.1a1.4 1.4 0 0 0 .3 1.5l3.1 3.1c.4.4 1 .5 1.5.3l2.1-.9c.7-.3 1.5-.1 1.9.5l1.4 2.2c.4.6.3 1.4-.2 1.9l-1.5 1.5c-.6.6-1.5.9-2.3.7-3.7-.8-7.1-3.3-9.7-6.8C4.9 10.7 3.5 7.8 3.5 4.7c-.1-.9.3-1.7.9-2.3L7.2 3.5Z"/></svg></div>
+        <h3 class="strip__label">Phone</h3>
+        <p class="strip__hint">Contact us over phone</p>
+        <a class="strip__value" href="tel:${PHONE_TEL}">${PHONE}</a>
+      </div>
+      <div class="strip__item">
+        <div class="strip__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2.1.5 6.3 4.4a1 1 0 0 0 1.2 0l6.3-4.4a1.25 1.25 0 0 0-1.15-.75H6.25c-.5 0-.95.3-1.15.75Z"/></svg></div>
+        <h3 class="strip__label">Email</h3>
+        <p class="strip__hint">Contact us with email</p>
+        <a class="strip__value" href="mailto:${EMAIL}">${EMAIL}</a>
+      </div>
+      <div class="strip__item">
+        <div class="strip__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5a7 7 0 0 0-7 7c0 4.6 5.2 10.3 6.4 11.5a.9.9 0 0 0 1.2 0C13.8 19.8 19 14.1 19 9.5a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg></div>
+        <h3 class="strip__label">Address</h3>
+        <p class="strip__hint">Where we're based</p>
+        <div class="strip__value">${LOCATION}</div>
+        <p class="strip__sub">Headquarters · Global talent bridge</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="form-card">
+        <h2>Send us a message</h2>
+        <div id="form-status" class="status" hidden></div>
+        <form class="form" id="contact-form" novalidate>
+          <div class="row">
+            <label class="field">
+              <span class="label">Your Name <em>*</em></span>
+              <input class="input" type="text" name="name" placeholder="John Doe" required autocomplete="name">
+              <p class="field-error" data-error-for="name"></p>
+            </label>
+            <label class="field">
+              <span class="label">Email Address <em>*</em></span>
+              <input class="input" type="email" name="email" placeholder="john@example.com" required autocomplete="email">
+              <p class="field-error" data-error-for="email"></p>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">
+              <span class="label">Company</span>
+              <input class="input" type="text" name="company" placeholder="Your Company" autocomplete="organization">
+              <p class="field-error" data-error-for="company"></p>
+            </label>
+            <label class="field">
+              <span class="label">Phone Number</span>
+              <input class="input" type="tel" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+              <p class="field-error" data-error-for="phone"></p>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">
+              <span class="label">I'm interested in <em>*</em></span>
+              <select class="select" name="service" required>
+                <option value="">Select a service</option>
+                <option>Hiring engineering talent</option>
+                <option>Joining as talent</option>
+                <option>Enterprise partnership</option>
+                <option>Project / consulting</option>
+                <option>Other</option>
+              </select>
+              <p class="field-error" data-error-for="service"></p>
+            </label>
+            <label class="field">
+              <span class="label">Estimated timeline</span>
+              <select class="select" name="budget">
+                <option value="">Select timeline</option>
+                <option value="asap">ASAP / this month</option>
+                <option value="1-3">1–3 months</option>
+                <option value="3-6">3–6 months</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+              <p class="field-error" data-error-for="budget"></p>
+            </label>
+          </div>
+          <label class="field">
+            <span class="label">Project details <em>*</em></span>
+            <textarea class="textarea" name="message" placeholder="Tell us about roles, skills, goals, and timeline..." required></textarea>
+            <p class="field-error" data-error-for="message"></p>
+          </label>
+          <button class="submit" type="submit" id="submit-btn">Send Message</button>
+          <p class="note">Sends directly to ${EMAIL}. We'll reply within 24 hours.</p>
+        </form>
+      </div>
+
+      <aside class="aside">
+        <div class="info-card">
+          <h3>Get in Touch</h3>
+          <p>Have a question or want to discuss a project? We're here to help.</p>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2.1.5 6.3 4.4a1 1 0 0 0 1.2 0l6.3-4.4a1.25 1.25 0 0 0-1.15-.75H6.25c-.5 0-.95.3-1.15.75Z"/></svg></span>
+              <div>
+                <span class="info-label">Email</span>
+                <a class="info-value" href="mailto:${EMAIL}">${EMAIL}</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 3.5c.5-.5 1.3-.6 1.9-.2l2.2 1.4c.6.4.8 1.2.5 1.9l-.9 2.1a1.4 1.4 0 0 0 .3 1.5l3.1 3.1c.4.4 1 .5 1.5.3l2.1-.9c.7-.3 1.5-.1 1.9.5l1.4 2.2c.4.6.3 1.4-.2 1.9l-1.5 1.5c-.6.6-1.5.9-2.3.7-3.7-.8-7.1-3.3-9.7-6.8C4.9 10.7 3.5 7.8 3.5 4.7c-.1-.9.3-1.7.9-2.3L7.2 3.5Z"/></svg></span>
+              <div>
+                <span class="info-label">Phone</span>
+                <a class="info-value" href="tel:${PHONE_TEL}">${PHONE}</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5a7 7 0 0 0-7 7c0 4.6 5.2 10.3 6.4 11.5a.9.9 0 0 0 1.2 0C13.8 19.8 19 14.1 19 9.5a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg></span>
+              <div>
+                <span class="info-label">Location</span>
+                <span class="info-value">${LOCATION}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4.5 13.2c-.3.4 0 1 .5 1H11l-1 8 9.2-12.2c.3-.4 0-1-.5-1H13V2Z"/></svg></span>
+          <div>
+            <h4>Quick Response</h4>
+            <p>We respond within 24 hours</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.4 4.8 5.2v5.4c0 5 3.3 9.5 7.2 10.9 3.9-1.4 7.2-5.9 7.2-10.9V5.2L12 2.4Zm0 9.8 4.2-4.2 1.3 1.3L12 15 6.5 9.5l1.3-1.3L12 12.2Z"/></svg></span>
+          <div>
+            <h4>NDA Protection</h4>
+            <p>Your ideas are safe with us</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 3.5h6A1.5 1.5 0 0 1 16.5 5v1.5H19A2.5 2.5 0 0 1 21.5 9v8A2.5 2.5 0 0 1 19 19.5H5A2.5 2.5 0 0 1 2.5 17V9A2.5 2.5 0 0 1 5 6.5h2.5V5A1.5 1.5 0 0 1 9 3.5Zm1.5 1.5v1h3V5h-3Z"/></svg></span>
+          <div>
+            <h4>Free Consultation</h4>
+            <p>No commitment initial call</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© Elitechnexus LLC — Philippines</span>
+    <span><a href="mailto:${EMAIL}">${EMAIL}</a> · <a href="tel:${PHONE_TEL}">${PHONE}</a></span>
+  </footer>
+
+  <script>
+  (function () {
+    var EMAIL_TO = ${JSON.stringify(EMAIL)};
+    var form = document.getElementById("contact-form");
+    var statusEl = document.getElementById("form-status");
+    var submitBtn = document.getElementById("submit-btn");
+
+    function showStatus(type, message) {
+      statusEl.hidden = false;
+      statusEl.className = "status " + type;
+      statusEl.textContent = message;
+    }
+
+    function clearErrors() {
+      form.querySelectorAll(".input, .select, .textarea").forEach(function (el) {
+        el.classList.remove("is-invalid");
+      });
+      form.querySelectorAll(".field-error").forEach(function (el) {
+        el.textContent = "";
+      });
+    }
+
+    function setError(name, msg) {
+      var field = form.elements[name];
+      if (field) field.classList.add("is-invalid");
+      var err = form.querySelector('[data-error-for="' + name + '"]');
+      if (err) err.textContent = msg;
+    }
+
+    function isEmail(v) {
+      return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearErrors();
+      statusEl.hidden = true;
+
+      var name = String(form.name.value || "").trim();
+      var email = String(form.email.value || "").trim();
+      var company = String(form.company.value || "").trim();
+      var phone = String(form.phone.value || "").trim();
+      var service = String(form.service.value || "").trim();
+      var budget = String(form.budget.value || "").trim();
+      var message = String(form.message.value || "").trim();
+
+      var ok = true;
+      if (!name) { setError("name", "Name is required."); ok = false; }
+      if (!email) { setError("email", "Email is required."); ok = false; }
+      else if (!isEmail(email)) { setError("email", "Enter a valid email address."); ok = false; }
+      if (!service) { setError("service", "Please select what you're interested in."); ok = false; }
+      if (!message) { setError("message", "Please share a few project details."); ok = false; }
+      else if (message.length < 10) { setError("message", "Please add a bit more detail (at least 10 characters)."); ok = false; }
+
+      if (!ok) {
+        showStatus("error", "Please complete the required fields before sending.");
+        var bad = form.querySelector(".is-invalid");
+        if (bad) bad.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      var subject = encodeURIComponent("Elitechnexus inquiry — " + service + " — " + name);
+      var lines = [
+        "New contact message from the Elitechnexus website:",
+        "",
+        "Name: " + name,
+        "Email: " + email,
+        "Company: " + (company || "Not specified"),
+        "Phone: " + (phone || "Not specified"),
+        "Interest: " + service,
+        "Timeline: " + (budget || "Not specified"),
+        "",
+        "Message:",
+        message,
+        "",
+        "Submitted from: /contact",
+        "Time: " + new Date().toISOString()
+      ];
+      var body = encodeURIComponent(lines.join("\\n"));
+      window.location.href = "mailto:" + EMAIL_TO + "?subject=" + subject + "&body=" + body;
+
+      showStatus(
+        "info",
+        "Opening your email client. If it doesn't open, please send your message directly to " + EMAIL_TO
+      );
+      alert("Thanks for reaching out! We'll get back to you within 24 hours.");
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message";
+    });
+  })();
+  </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync("public/contact/index.html", html);
+console.log("contact rebuilt", {
+  bytes: html.length,
+  hero: html.includes("Let's Build Something"),
+  strip: html.includes("Contact us over phone"),
+  form: html.includes("Send us a message"),
+  features: html.includes("Quick Response"),
+  mailto: html.includes(EMAIL),
+});
