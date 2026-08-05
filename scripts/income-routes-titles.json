@@ -1,0 +1,92 @@
+[
+  {
+    "n": "01",
+    "top": "Income route",
+    "label": "From skill → income"
+  },
+  {
+    "n": "02",
+    "top": "Income route",
+    "label": "From resource → income"
+  },
+  {
+    "n": "03",
+    "top": "Income route",
+    "label": "From network → income"
+  },
+  {
+    "n": "04",
+    "top": "Income route",
+    "label": "From time → income"
+  },
+  {
+    "n": "05",
+    "top": "Jobs & projects",
+    "label": "Full-time job support"
+  },
+  {
+    "n": "06",
+    "top": "Jobs & projects",
+    "label": "Freelance project support"
+  },
+  {
+    "n": "07",
+    "top": "Jobs & projects",
+    "label": "Side-income route"
+  },
+  {
+    "n": "08",
+    "top": "Jobs & projects",
+    "label": "Partner income"
+  },
+  {
+    "n": "09",
+    "top": "Free support",
+    "label": "Resume review & polish"
+  },
+  {
+    "n": "10",
+    "top": "Free support",
+    "label": "Tools & devices"
+  },
+  {
+    "n": "11",
+    "top": "Grow together",
+    "label": "Community support"
+  },
+  {
+    "n": "12",
+    "top": "Free support",
+    "label": "Portfolio proof"
+  },
+  {
+    "n": "13",
+    "top": "Free support",
+    "label": "Job interview support"
+  },
+  {
+    "n": "14",
+    "top": "Free support",
+    "label": "Daily job & project applications"
+  },
+  {
+    "n": "15",
+    "top": "Grow together",
+    "label": "Skill training"
+  },
+  {
+    "n": "16",
+    "top": "Grow together",
+    "label": "Interview practice"
+  },
+  {
+    "n": "17",
+    "top": "Grow together",
+    "label": "Digital delivery"
+  },
+  {
+    "n": "18",
+    "top": "Grow together",
+    "label": "Tools & setup"
+  }
+]
