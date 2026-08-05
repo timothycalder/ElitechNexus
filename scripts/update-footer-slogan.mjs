@@ -17,28 +17,27 @@ const CSS = `<style id="elitechnexus-footer-slogan-css">
   line-height:1.18 !important;
   overflow:visible !important;
 }
-#site-footer__top-left-title .o-text-gradient{
-  overflow:visible !important;
-  display:inline-block;
-  padding-bottom:0.06em;
-}
 #site-footer__top-left-title .elite-footer-line{
   font-size:1em;
+  color:#0a0a0a !important;
+  background:none !important;
+  -webkit-background-clip:unset !important;
+  background-clip:unset !important;
+  -webkit-text-fill-color:#0a0a0a !important;
 }
-#site-footer__top-left-title .elite-footer-brand{
+#site-footer__top-left-title .elite-footer-brand.o-text-gradient,
+#site-footer__top-left-title .o-text-gradient.elite-footer-brand{
   font-size:1.32em;
   line-height:1.12;
   display:inline-block;
   margin-top:0.08em;
+  overflow:visible !important;
+  padding-bottom:0.06em;
 }
 </style>`;
 
 const NEW =
-  '<span class="o-text-gradient"><span class="elite-footer-line">Let\'s Build Together with</span><br><span class="elite-footer-brand">Elitechnexus LLC!</span></span>';
-
-// Match any previous slogan variants inside the footer title span
-const sloganRe =
-  /<span class="o-text-gradient">[\s\S]*?Elitechnexus LLC!?<\/span>(?:\s*<\/span>)?/;
+  '<span class="elite-footer-line">Let\'s Build Together with</span><br><span class="o-text-gradient elite-footer-brand">Elitechnexus LLC!</span>';
 
 let n = 0;
 for (const f of walk("public")) {
@@ -46,7 +45,6 @@ for (const f of walk("public")) {
   if (!h.includes("site-footer__top-left-title")) continue;
   const before = h;
 
-  // Replace the gradient slogan block inside the footer title
   h = h.replace(
     /(<h3 id="site-footer__top-left-title">)[\s\S]*?(<\/h3>)/,
     `$1${NEW}$2`
