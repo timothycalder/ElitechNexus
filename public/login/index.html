@@ -413,7 +413,71 @@
 <link rel="icon" href="/assets/images/elitechnexus-logo-transparent.png?v=14" type="image/png" sizes="32x32">
 <link rel="icon" href="/assets/images/elitechnexus-logo-transparent.png?v=14" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/assets/images/elitechnexus-logo-transparent.png?v=14" type="image/png" sizes="180x180">
-</head>
+<style id="elitechnexus-cursor-css">
+/* Classic professional arrow cursor (no circle overlay) */
+@media (pointer: fine) {
+  html, body, #ui, #viewport-wrapper, #pages-container, .page, canvas {
+    cursor: url("/assets/cursors/elite-default.png") 4 2, auto;
+  }
+  a, button, [role="button"], input[type="submit"], input[type="button"],
+  label[for], .elite-people__cta, #site-header__button-cta,
+  #site-header__button-contact, #site-header__button-transparent,
+  #site-menu a, .site-header__nav-item a, #site-header__button-menu,
+  .elite-people__btn, .elite-people__btn * {
+    cursor: url("/assets/cursors/elite-pointer.png") 6 1, pointer;
+  }
+  .elite-people__track,
+  .elite-people__track .elite-people__card,
+  .elite-people__track .elite-people__card-copy,
+  .elite-people__track .elite-people__card-photo,
+  .elite-people__track img {
+    cursor: url("/assets/cursors/elite-drag.png") 4 2, grab;
+  }
+  .elite-people__track.is-dragging,
+  .elite-people__track.is-dragging * {
+    cursor: url("/assets/cursors/elite-dragging.png") 4 2, grabbing;
+  }
+  .elite-people__btn,
+  .elite-people__btn * {
+    cursor: url("/assets/cursors/elite-pointer.png") 6 1, pointer;
+  }
+  input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+  textarea, select, [contenteditable="true"] {
+    cursor: text;
+  }
+
+  /* Chatbot / Jotform: never cover with site cursor — use normal system cursor */
+  iframe[src*="jotform"],
+  iframe[src*="jotfor.ms"],
+  [id*="jotform"],
+  [id*="JotForm"],
+  [class*="jotform"],
+  [class*="JotForm"],
+  [id*="agent-"],
+  [class*="agent-"],
+  [class*="AgentWidget"],
+  [class*="jfAgent"],
+  jotform-agent,
+  #elite-cursor {
+    cursor: auto !important;
+  }
+  iframe[src*="jotform"] *,
+  iframe[src*="jotfor.ms"] *,
+  [id*="jotform"] *,
+  [class*="jotform"] *,
+  [id*="agent-"] *,
+  [class*="jfAgent"] * {
+    cursor: auto !important;
+  }
+}
+/* Hide legacy circle cursor if any leftover node exists */
+#elite-cursor { display: none !important; }
+
+html.elite-chatbot-active,
+html.elite-chatbot-active * {
+  cursor: auto !important;
+}
+</style></head>
 <body>
   <header class="top">
     <a class="top__brand" href="/">
@@ -460,7 +524,9 @@
             </label>
             <label>
               <span class="label">Phone number <em>*</em></span>
-              <input type="tel" name="phone" placeholder="+1 555 000 0000" required autocomplete="tel">
+              <input type="tel" name="phone" id="phone-input" placeholder="+1 (339) 365-7217" required autocomplete="tel" inputmode="tel">
+              <p class="field-hint" style="margin:0.35rem 0 0;font-size:0.8rem;opacity:0.7;">Start with your country code (e.g. <strong>+1</strong> → United States, <strong>+44</strong> → United Kingdom)</p>
+              <p class="field-hint" id="phone-country-hint" hidden style="margin:0.25rem 0 0;font-size:0.8rem;color:#0a7a5c;"></p>
               <p class="field-error" data-error-for="phone"></p>
             </label>
             <label>
@@ -499,9 +565,10 @@
         <div class="alt">
           <a href="#" id="email-request-btn">Continue with email request</a>
           <a href="/contact">Contact Elitechnexus</a>
+          <a href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>
         </div>
         <p class="legal">
-          By continuing, you agree to work with Elitechnexus LLC (Philippines).
+          By continuing, you agree to work with Elitechnexus LLC.
           Questions? <a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13393657217">+1 (339) 365-7217</a>
         </p>
       </div>
@@ -535,6 +602,127 @@
   (function () {
     var EMAIL_TO = "steven.miller@elitechnexus.com";
     var COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+
+    /* Dialing code → country (longest match wins). +1 defaults to United States. */
+    var DIAL_TO_COUNTRY = {
+      "1": "United States",
+      "7": "Russia",
+      "20": "Egypt",
+      "27": "South Africa",
+      "30": "Greece",
+      "31": "Netherlands",
+      "32": "Belgium",
+      "33": "France",
+      "34": "Spain",
+      "36": "Hungary",
+      "39": "Italy",
+      "40": "Romania",
+      "41": "Switzerland",
+      "43": "Austria",
+      "44": "United Kingdom",
+      "45": "Denmark",
+      "46": "Sweden",
+      "47": "Norway",
+      "48": "Poland",
+      "49": "Germany",
+      "51": "Peru",
+      "52": "Mexico",
+      "53": "Cuba",
+      "54": "Argentina",
+      "55": "Brazil",
+      "56": "Chile",
+      "57": "Colombia",
+      "58": "Venezuela",
+      "60": "Malaysia",
+      "61": "Australia",
+      "62": "Indonesia",
+      "63": "Philippines",
+      "64": "New Zealand",
+      "65": "Singapore",
+      "66": "Thailand",
+      "81": "Japan",
+      "82": "South Korea",
+      "84": "Vietnam",
+      "86": "China",
+      "90": "Turkey",
+      "91": "India",
+      "92": "Pakistan",
+      "93": "Afghanistan",
+      "94": "Sri Lanka",
+      "95": "Myanmar",
+      "98": "Iran",
+      "212": "Morocco",
+      "213": "Algeria",
+      "216": "Tunisia",
+      "218": "Libya",
+      "220": "Gambia",
+      "221": "Senegal",
+      "234": "Nigeria",
+      "254": "Kenya",
+      "255": "Tanzania",
+      "256": "Uganda",
+      "260": "Zambia",
+      "263": "Zimbabwe",
+      "351": "Portugal",
+      "352": "Luxembourg",
+      "353": "Ireland",
+      "354": "Iceland",
+      "358": "Finland",
+      "359": "Bulgaria",
+      "370": "Lithuania",
+      "371": "Latvia",
+      "372": "Estonia",
+      "380": "Ukraine",
+      "381": "Serbia",
+      "385": "Croatia",
+      "386": "Slovenia",
+      "420": "Czech Republic",
+      "421": "Slovakia",
+      "852": "China",
+      "853": "China",
+      "855": "Cambodia",
+      "856": "Laos",
+      "880": "Bangladesh",
+      "886": "Taiwan",
+      "960": "Maldives",
+      "961": "Lebanon",
+      "962": "Jordan",
+      "963": "Syria",
+      "964": "Iraq",
+      "965": "Kuwait",
+      "966": "Saudi Arabia",
+      "971": "United Arab Emirates",
+      "972": "Israel",
+      "973": "Bahrain",
+      "974": "Qatar",
+      "975": "Bhutan",
+      "976": "Mongolia",
+      "977": "Nepal",
+      "992": "Tajikistan",
+      "993": "Turkmenistan",
+      "994": "Azerbaijan",
+      "995": "Georgia",
+      "996": "Kyrgyzstan",
+      "998": "Uzbekistan"
+    };
+    var DIAL_CODES = Object.keys(DIAL_TO_COUNTRY).sort(function (a, b) {
+      return b.length - a.length;
+    });
+
+    function detectCountryFromPhone(raw) {
+      var s = String(raw || "").trim();
+      if (!s) return null;
+      // Prefer explicit +country-code form
+      var plus = s.match(/^\+\s*(\d{1,3})/);
+      if (plus) {
+        var digitsAfterPlus = s.replace(/\D/g, "");
+        for (var i = 0; i < DIAL_CODES.length; i++) {
+          var code = DIAL_CODES[i];
+          if (digitsAfterPlus.indexOf(code) === 0) return DIAL_TO_COUNTRY[code];
+        }
+      }
+      return null;
+    }
 
     function setMode(mode) {
       var signup = mode === "signup";
@@ -572,6 +760,9 @@
     /* ---- Country autocomplete ---- */
     var locInput = document.getElementById("location-input");
     var suggest = document.getElementById("location-suggest");
+    var phoneInput = document.getElementById("phone-input") || document.querySelector('#signup-form input[name="phone"]');
+    var phoneCountryHint = document.getElementById("phone-country-hint");
+    var locationAutoFromDial = false;
     var activeIdx = -1;
 
     function hideSuggest() {
@@ -587,6 +778,28 @@
       return COUNTRIES.filter(function (c) {
         return c.toLowerCase().indexOf(q) === 0;
       }).slice(0, 10);
+    }
+
+    function applyCountryFromDial(country) {
+      if (!locInput || !country) return;
+      if (!locInput.value.trim() || locationAutoFromDial) {
+        locInput.value = country;
+        locationAutoFromDial = true;
+        locInput.classList.remove("is-invalid");
+        clearError("location");
+        hideSuggest();
+      }
+      if (phoneCountryHint) {
+        phoneCountryHint.hidden = false;
+        phoneCountryHint.textContent = "Detected country: " + country + " (you can change the location field if needed)";
+      }
+    }
+
+    function clearDialHint() {
+      if (phoneCountryHint) {
+        phoneCountryHint.hidden = true;
+        phoneCountryHint.textContent = "";
+      }
     }
 
     function renderSuggest(list) {
@@ -605,6 +818,7 @@
         btn.addEventListener("mousedown", function (e) {
           e.preventDefault();
           locInput.value = name;
+          locationAutoFromDial = false;
           locInput.classList.remove("is-invalid");
           clearError("location");
           hideSuggest();
@@ -618,6 +832,7 @@
 
     if (locInput && suggest) {
       locInput.addEventListener("input", function () {
+        locationAutoFromDial = false;
         var q = locInput.value;
         if (!q.trim()) { hideSuggest(); return; }
         renderSuggest(filterCountries(q));
@@ -642,6 +857,18 @@
       });
       locInput.addEventListener("blur", function () {
         setTimeout(hideSuggest, 150);
+      });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener("input", function () {
+        var country = detectCountryFromPhone(phoneInput.value);
+        if (country) applyCountryFromDial(country);
+        else clearDialHint();
+      });
+      phoneInput.addEventListener("blur", function () {
+        var country = detectCountryFromPhone(phoneInput.value);
+        if (country) applyCountryFromDial(country);
       });
     }
 
@@ -671,8 +898,33 @@
     }
 
     function isValidPhone(v) {
-      var digits = v.replace(/\D/g, "");
-      return digits.length >= 7 && digits.length <= 15;
+      var raw = String(v || "").trim();
+      if (!raw) return false;
+      // Allowed style only: optional +, digits, spaces, dashes, parentheses, dots
+      if (!/^\+?[\d\s().\-]{7,22}$/.test(raw)) return false;
+      // Must not be mostly punctuation / must look like a real number
+      if (!/\d{3,}/.test(raw.replace(/\D/g, ""))) return false;
+      var digits = raw.replace(/\D/g, "");
+      // International phones: 10–15 digits (E.164 max is 15)
+      if (digits.length < 10 || digits.length > 15) return false;
+      // Reject obviously fake (all same digit, sequential junk)
+      if (/^(\d)\1+$/.test(digits)) return false;
+      // If starts with +, require a country code (1–3 digits) then subscriber digits
+      if (raw.charAt(0) === "+") {
+        if (!/^\+\d{1,3}[\d\s().\-]{6,}$/.test(raw)) return false;
+      }
+      return true;
+    }
+
+    function phoneAlertMessage() {
+      return (
+        "Phone number format is incorrect.\n\n" +
+        "Please use a valid style, for example:\n" +
+        "• +1 (339) 365-7217\n" +
+        "• +1 555 000 0000\n" +
+        "• 339-365-7217\n\n" +
+        "Use 10–15 digits. Letters and special symbols (except + - ( ) . space) are not allowed."
+      );
     }
 
     function isKnownCountry(v) {
@@ -768,8 +1020,15 @@
       if (!password) { setError(form.password, "Password is required."); ok = false; }
       else if (password.length < 8) { setError(form.password, "Password must be at least 8 characters."); ok = false; }
 
-      if (!phone) { setError(form.phone, "Phone number is required."); ok = false; }
-      else if (!isValidPhone(phone)) { setError(form.phone, "Enter a valid phone number (7–15 digits)."); ok = false; }
+      if (!phone) {
+        setError(form.phone, "Phone number is required.");
+        alert("Phone number is required.\n\nPlease enter your phone number in a valid style, e.g. +1 (339) 365-7217.");
+        ok = false;
+      } else if (!isValidPhone(phone)) {
+        setError(form.phone, "Enter a valid phone style (10–15 digits), e.g. +1 (339) 365-7217.");
+        alert(phoneAlertMessage());
+        ok = false;
+      }
 
       if (!location) { setError(form.location, "Location is required."); ok = false; }
       else if (!isKnownCountry(location)) {
@@ -856,5 +1115,33 @@
     });
   })();
   </script>
-</body>
+
+<!-- elitechnexus-jotform-chatbot -->
+<script src="https://cdn.jotfor.ms/agent/embedjs/019fd78f69c0700086044c64fa3a2536ec27/embed.js" defer></script>
+<script id="elitechnexus-cursor-js">
+(function () {
+  // Remove legacy circle cursor overlay (was covering chatbot)
+  document.documentElement.classList.remove("elite-cursor-on");
+  var legacy = document.getElementById("elite-cursor");
+  if (legacy && legacy.parentNode) legacy.parentNode.removeChild(legacy);
+
+  // When chatbot UI is hovered/focused, force normal cursor on page chrome nearby
+  function isChatbotNode(node) {
+    if (!node || node === document || node === window) return false;
+    if (node.nodeType !== 1) node = node.parentElement;
+    if (!node || !node.closest) return false;
+    return !!(
+      node.closest('iframe[src*="jotform"], iframe[src*="jotfor.ms"], [id*="jotform"], [id*="JotForm"], [class*="jotform"], [class*="JotForm"], [id*="agent-"], [class*="jfAgent"], [class*="AgentWidget"], jotform-agent')
+    );
+  }
+
+  document.addEventListener("pointerover", function (e) {
+    if (isChatbotNode(e.target)) {
+      document.documentElement.classList.add("elite-chatbot-active");
+    } else {
+      document.documentElement.classList.remove("elite-chatbot-active");
+    }
+  }, true);
+})();
+</script></body>
 </html>
