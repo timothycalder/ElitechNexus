@@ -57,7 +57,7 @@
   background-position:left center!important;
   background-color:transparent!important;
 }
-</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Docs | Elitechnexus</title><meta name="description" content="How Elitechnexus works — engagement types, proof-first process, and what to expect."><meta name="keywords" content="AI coding agent, coding AI, AI software engineer, SWE agent, AI coding assistant, cloud agent, parallel agent"><base href="/"><meta property="og:title" content="Docs"><meta property="og:description" content="How Elitechnexus works — engagement types, proof-first process, and what to expect."><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="Docs"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="How Elitechnexus works — engagement types, proof-first process, and what to expect."><meta name="twitter:image:type" content="image/png"><meta name="twitter:image:width" content="1200"><meta name="twitter:image:height" content="630"> <meta property="og:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14"> <meta name="twitter:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14"> <link rel="canonical" href="/docs/"><link rel="stylesheet" href="/_astro/_caseStudy_.C5ufd_-D.css"><script type="module" src="/_astro/hoisted.Dadqo-kW.js"></script><style id="elitechnexus-bento-layout-css">
+</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Docs | Elitechnexus</title><meta name="description" content="Guide to Elitechnexus jobs, paid projects, and proof-first placement for candidates and companies."><meta name="keywords" content="AI coding agent, coding AI, AI software engineer, SWE agent, AI coding assistant, cloud agent, parallel agent"><base href="/"><meta property="og:title" content="Docs | How Elitechnexus works"><meta property="og:description" content="Guide to Elitechnexus jobs, paid projects, and proof-first placement for candidates and companies."><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="Docs"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Guide to Elitechnexus jobs, paid projects, and proof-first placement for candidates and companies."><meta name="twitter:image:type" content="image/png"><meta name="twitter:image:width" content="1200"><meta name="twitter:image:height" content="630"> <meta property="og:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14"> <meta name="twitter:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14"> <link rel="canonical" href="/docs/"><link rel="stylesheet" href="/_astro/_caseStudy_.C5ufd_-D.css"><script type="module" src="/_astro/hoisted.Dadqo-kW.js"></script><style id="elitechnexus-bento-layout-css">
 /* Item 01: keep title + subtitle together at top (like original Devin card) */
 @media (min-width: 940px) {
   #home-bento__item-01 .home-bento__item-text {
@@ -441,12 +441,72 @@
   position: relative !important;
   z-index: 2 !important;
   min-height: 70vh;
+  background: #071018 !important;
 }
 #viewport-wrapper,
 #pages-container{
   min-height: 70vh;
+  background: #071018 !important;
 }
-</style><script id="elitechnexus-auth-hash-redirect">
+#docs .elite-page,
+#docs.page .elite-page{
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+#preloader,
+#customers-overlay,
+#vimeo-overlay,
+canvas#canvas{
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.elite-page__section-title{
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  color: #f2f6fb;
+}
+.elite-page__note{
+  max-width: 62ch;
+  color: #8fa6bc;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+}
+.elite-page__steps{
+  margin: 0 0 2rem;
+  padding-left: 1.15rem;
+  max-width: 62ch;
+  color: #c5d4e2;
+  line-height: 1.6;
+}
+.elite-page__steps li{ margin-bottom: 0.55rem; }
+</style>
+<script id="elitechnexus-docs-reveal">
+(function () {
+  function reveal() {
+    ["preloader","customers-overlay","vimeo-overlay"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    var canvas = document.getElementById("canvas");
+    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    document.documentElement.style.opacity = "1";
+    if (document.body) document.body.style.opacity = "1";
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", reveal);
+  } else {
+    reveal();
+  }
+  setTimeout(reveal, 0);
+  setTimeout(reveal, 800);
+})();
+</script><script id="elitechnexus-auth-hash-redirect">
 (function () {
   var h = (location.hash || "").toLowerCase();
   if (h === "#/register" || h === "#register" || h === "#/login" || h === "#login") {
@@ -733,97 +793,77 @@ html.elite-chatbot-active,
 html.elite-chatbot-active * {
   cursor: auto !important;
 }
-</style></head> <body> <canvas id="canvas"></canvas> <div id="ui"> <header id="site-header"> <div id="site-header__container"> <a id="site-header__logo" href="/"> <div class="o-icon elitechnexus-logo-wrap"><img src="/assets/images/elitechnexus-logo.svg?v=14" alt="Elitechnexus" class="elitechnexus-logo"/></div> </a> <nav id="site-header__nav"> <div id="site-header__nav-bg"></div> <ul id="site-header__nav-list-01"> <li class="site-header__nav-item" data-id="home"> <a href="/"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Home</div> </a> </li> <li class="site-header__nav-item" data-id="enterprise"> <a href="/enterprise"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Enterprise</div> </a> </li>  <li class="site-header__nav-item" data-id="customers"> <a href="/customers"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Customers</div> </a> </li> </ul> <ul id="site-header__nav-list-02" aria-hidden="true"></ul> <div id="site-header__button-list"> <a id="site-header__button-contact" href="/contact"> <div id="site-header__button-contact-inner"> <span>Contact</span> </div> </a> <a id="site-header__button-transparent" href="/login#login"> <div id="site-header__button-transparent-inner-wrapper"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> <span>Login</span> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> </div> </a> <a id="site-header__button-cta" href="/login"> <span>Get started</span> </a> <div id="site-header__button-menu"></div> </div> </nav> </div> <div id="site-menu"> <div id="site-menu__bg"></div> <div id="site-menu__content"> <ul id="site-menu__nav-01"> <li data-id="home"> <a href="/"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Home</span> </a> </li> <li data-id="enterprise"> <a href="/enterprise"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Enterprise</span> </a> </li>  <li data-id="customers"> <a href="/customers"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Customers</span> </a> </li> </ul> <ul id="site-menu__nav-02"> <li> <a href="/contact"> <span>Contact</span> </a> </li> </ul> <a id="site-menu__btn-1" href="/login"> <div>Get started</div> </a> <a id="site-menu__btn-2" href="/login"> <div> <span>Login</span> <span><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div></span> </div> </a> </div> </div> </header>  <div id="vimeo-overlay" data-code="1037751640"> <button id="vimeo-overlay__close-button"><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="2" y1="2" x2="14" y2="14"></line> <line x1="14" y1="2" x2="2" y2="14"></line> </svg> </div></button> <div id="vimeo-overlay__bg"></div> <div id="vimeo-overlay__container" class="o-container"> <div id="vimeo-overlay__content"> <div id="vimeo-overlay__content-inner"> <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" allow="fullscreen; picture-in-picture" allowfullscreen></iframe> </div> </div> </div> </div> <div id="customers-overlay"> <button id="customers-overlay__close-button"><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="2" y1="2" x2="14" y2="14"></line> <line x1="14" y1="2" x2="2" y2="14"></line> </svg> </div></button> <div id="customers-overlay__bg"></div> <canvas id="customers-overlay__slider"></canvas> <div id="customers-overlay__content"> <div id="customers-overlay__content-inner"> <div class="o-prose"> <div class="o-icon"> <svg viewBox="0 0 60 38"> <path d="M18.068,3c-2.858,0-5.291,1.126-7.125,3.052-.129-.005-.259-.008-.39-.008-3.73,0-7.229,2.154-8.937,5.498-.746,1.46-1.023,3.032-1.109,4.63-.052.959-.035,1.927-.017,2.889h0c.009.478.017.954.017,1.426v13.772h7.657s.006-6.784,0-12.617c0-1.34-.005-2.63-.008-3.777h0c-.006-2.214-.011-3.893.008-4.367.136-3.397,1.057-5.619,2.777-7.436,5.7.004,9.391,3.922,9.597,10.156.047,1.431.062,9.09.062,9.09v8.949h7.657v-12.099c0-.34,0-.676,0-1.007v-.005c.002-3.228.004-6.014-.225-7.991-.706-6.09-4.398-10.156-9.966-10.156ZM58.455,18.941c.017.96.035,1.928-.017,2.886-.086,1.599-.363,3.17-1.109,4.63-1.708,3.345-5.206,5.498-8.937,5.498-.13,0-.261-.003-.389-.008-1.834,1.927-4.267,3.052-7.125,3.052-5.568,0-9.26-4.065-9.965-10.156-.229-1.978-.227-4.766-.225-7.996,0-.08,0-.16,0-.241,0-.253,0-.509,0-.767V3.742l7.652-.007v8.949c0,4.114.02,7.666.067,9.098.206,6.234,3.896,10.151,9.596,10.156,1.72-1.817,2.642-4.039,2.777-7.436.019-.474.014-2.153.008-4.367-.003-1.147-.007-2.437-.008-3.777-.006-5.833,0-12.617,0-12.617h7.657v13.772c0,.472.009.948.017,1.426v.003Z"></path> </svg> </div> <h2 class="h1">How Nubank refactors millions of lines of code to improve engineering efficiency with Elitechnexus</h2> <div class="table"> <div> <div>8x</div> <div>engineering time efficiency gain</div> </div> <div> <div>20x</div> <div>cost savings</div> </div> </div> <div id="vimeo-preview"> <div id="vimeo-preview__image-wrapper"> <img alt="Vimeo">   <div id="icon-preview"></div> </div> </div> <h2>Overview</h2>
-<p>One of Nubank’s most critical, company-wide projects for 2023-2024 was a migration of their core ETL — an 8 year old, multi-million lines of code monolith — to sub-modules. To handle such a large refactor, their only option was a multi-year effort that distributed repetitive refactoring work across over one thousand of their engineers. With Elitechnexus, however, this changed: engineers were able to delegate Elitechnexus to handle their migrations and achieve a 12x efficiency improvement in terms of engineering hours saved, and over 20x cost savings. Among others, Data, Collections, and Risk business units verified and completed their migrations in weeks instead of months or years.</p>
-<h2>The Problem</h2>
-<p>Nubank was born into the tradition of centralized ETL FinServ architectures. To date, the monolith architecture had worked well for Nubank — it enabled the developer autonomy and flexibility that carried them through their hypergrowth phases. After 8 years, however, Nubank’s sheer volume of customer growth, as well as geographic and product expansion beyond their original credit card business, led to an entangled, behemoth ETL with countless cross-dependencies and no clear path to continuing to scale.</p>
-<p>For Nubankers, business critical data transformations started taking increasingly long to run, with chains of dependencies as deep as 70 and insufficient formal agreements on who was responsible for maintaining what. As the company continued to grow, it became clear that the ETL would be a primary bottleneck to scale.</p>
-<blockquote>
-<p>Nubank concluded that there was an urgent need to split up their monolithic ETL repository, amassing over 6 million lines of code, into smaller, more flexible sub-modules.</p>
-</blockquote>
-<p>Nubank’s code migration was filled with the monotonous, repetitive work that engineers dread. Moving each data class implementation from one architecture to another while tracing imports correctly, performing multiple delicate refactoring steps, and accounting for any number of edge cases was highly tedious, even to do just once or twice. At Nubank’s scale, however, the total migration scope involved more than 1,000 engineers moving ~100,000 data class implementations over an expected timeline of 18 months.</p>
-<p>In a world where engineering resources are scarce, such large-scale migrations and modernizations become massively expensive, time-consuming projects that distract from any engineering team’s core mission: building better products for customers. Unfortunately, this is the reality for many of the world’s largest organizations.</p>
-<h2>The Decision: an army of Elitechnexus to tackle subtasks in parallel</h2>
-<p>At project outset in 2023, Nubank had no choice but to rely on their engineers to perform code changes manually. Migrating one data class was a highly discretionary task, with multiple variations, edge cases, and ad hoc decision-making — far too complex to be scriptable, but high-volume enough to be a significant manual effort.</p>
-<p>Within weeks of Elitechnexus’s launch, Nubank identified a clear opportunity to accelerate their refactor at a fraction of the engineering hours. Migration or large refactoring tasks are often fantastic projects for Elitechnexus: after investing a small, fixed cost to teach Elitechnexus how to approach sub-tasks, Elitechnexus can go and complete the migration autonomously. A human is kept in the loop just to manage the project and approve Elitechnexus’s changes.</p>
-<h2>The Solution: Custom ETL Migration Elitechnexus</h2>
-<p>A task of this magnitude, with the vast number of variations that it had, was a ripe opportunity for fine-tuning. The Nubank team helped to collect examples of previous migrations their engineers had done manually, some of which were fed to Elitechnexus for fine-tuning. The rest were used to create a <a href="mailto:steven.miller@elitechnexus.com" target="_blank">benchmark evaluation set.</a> Against this evaluation set, we observed a <b>doubling of Elitechnexus’s task completion scores after fine-tuning, as well as a 4x improvement in task speed. Roughly 40 minutes per sub-task dropped to 10,</b> which made the whole migration start to look much cheaper and less time-consuming, allowing the company to devote more energy to new business and new value creation instead.</p>
-<p>Elitechnexus contributed to its own speed improvements by building itself classical tools and scripts it would later use on the most common, mechanical components of the migration. For instance, detecting the country extension of a data class (either ‘br’, ‘co’, or ‘mx’) based on its file path was a few-step process for each sub-task. Elitechnexus’s script automatically turned this into a single step executable — improvements from which added up immensely across all tens of thousands of sub-tasks.</p>
-<p>There is also a compounding advantage on Elitechnexus’s learning. In the first weeks, it was common to see outstanding errors to fix, or small things Elitechnexus wasn’t sure how to solve. But as Elitechnexus saw more examples and gained familiarity with the task, it started to avoid rabbit holes more often and find faster solutions to previously-seen errors and edge cases. Much like a human engineer, we observed obvious speed and reliability improvements with every day Elitechnexus worked on the migration.</p>
-<div class="highlight">
-    <span>Results:</span>
-    <span>Delivering an 8-12x faster migration, lifting a burden from every engineer, and slashing migration costs by 20x.</span>
-</div>
-<blockquote>
-<p>“Elitechnexus provided an easy way to reduce the number of engineering hours for the migration, in a way that was more stable and less prone to human error. Rather than engineers having to work across several files and complete an entire migration task 100%, they could just review Elitechnexus’s changes, make minor adjustments, then merge their PR”</p>
-<p>Jose Carlos Castro, Senior Product Manager</p>
-</blockquote>
-<div class="highlight">
-    <span>8-12x efficiency gains</span>
-    <span>This is calculated by comparing the typical engineering hours required to complete a data class migration task against the total engineering hours spent prompting and reviewing Elitechnexus’s work on the same task.</span>
-</div>
-<div class="highlight">
-    <span>Over 20x cost savings on scope of the migration delegated to Elitechnexus</span>
-    <span>This is calculated by comparing the cost of running Elitechnexus versus the hourly cost of an engineer completing that task. The significant savings are heavily driven by speed of task execution and cost effectiveness of Elitechnexus relative to human engineering time – it does not even consider the value captured by completing the entire project months ahead of schedule!</span>
-</div>
-<div class="highlight">
-    <span>Fewer dreaded migration tasks for Nubank engineers</span>
-</div> </div> </div> </div> </div> <div id="viewport-wrapper"> <div id="pages-container">   <div id="docs" class="page">
-
+</style></head> <body> <canvas id="canvas"></canvas> <div id="ui"> <header id="site-header"> <div id="site-header__container"> <a id="site-header__logo" href="/"> <div class="o-icon elitechnexus-logo-wrap"><img src="/assets/images/elitechnexus-logo.svg?v=14" alt="Elitechnexus" class="elitechnexus-logo"/></div> </a> <nav id="site-header__nav"> <div id="site-header__nav-bg"></div> <ul id="site-header__nav-list-01"> <li class="site-header__nav-item" data-id="home"> <a href="/"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Home</div> </a> </li> <li class="site-header__nav-item" data-id="enterprise"> <a href="/enterprise"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Enterprise</div> </a> </li>  <li class="site-header__nav-item" data-id="customers"> <a href="/customers"> <div><div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div></div> <div>Customers</div> </a> </li> </ul> <ul id="site-header__nav-list-02" aria-hidden="true"></ul> <div id="site-header__button-list"> <a id="site-header__button-contact" href="/contact"> <div id="site-header__button-contact-inner"> <span>Contact</span> </div> </a> <a id="site-header__button-transparent" href="/login#login"> <div id="site-header__button-transparent-inner-wrapper"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> <span>Login</span> <div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div> </div> </a> <a id="site-header__button-cta" href="/login"> <span>Get started</span> </a> <div id="site-header__button-menu"></div> </div> </nav> </div> <div id="site-menu"> <div id="site-menu__bg"></div> <div id="site-menu__content"> <ul id="site-menu__nav-01"> <li data-id="home"> <a href="/"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Home</span> </a> </li> <li data-id="enterprise"> <a href="/enterprise"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Enterprise</span> </a> </li>  <li data-id="customers"> <a href="/customers"> <div class="o-icon"> <svg viewBox="0 0 16 16"> <path d="M7.007,0.63c0.614-0.355,1.371-0.355,1.986,0l4.893,2.825c0.614,0.355,0.993,1.01,0.993,1.72v5.65 c0,0.709-0.378,1.365-0.993,1.72L8.993,15.37c-0.614,0.355-1.371,0.355-1.986,0l-4.893-2.825c-0.614-0.355-0.993-1.01-0.993-1.72 v-5.65c0-0.709,0.378-1.365,0.993-1.72L7.007,0.63z"></path> </svg> </div> <span>Customers</span> </a> </li> </ul> <ul id="site-menu__nav-02"> <li> <a href="/contact"> <span>Contact</span> </a> </li> </ul> <a id="site-menu__btn-1" href="/login"> <div>Get started</div> </a> <a id="site-menu__btn-2" href="/login"> <div> <span>Login</span> <span><div class="o-icon"> <svg viewBox="0 0 16 16"> <line x1="3.692" y1="10.386" x2="8.289" y2="5.789"></line> <polyline points="3.404,5.494 8.577,5.494 8.577,10.68 "></polyline> </svg> </div></span> </div> </a> </div> </div> </header>  <div id="viewport-wrapper"> <div id="pages-container">   <div id="docs" class="page">
   <section class="elite-page o-section">
-
     <div class="o-container">
-
       <h5 class="elite-page__caption">Docs</h5>
+      <h1 class="elite-page__title">How Elitechnexus <span class="o-text-gradient">works</span></h1>
+      <p class="elite-page__lead">A plain-language guide to jobs, paid projects, and proof-first placement — for talent and for companies hiring into US tech teams.</p>
 
-      <h1 class="elite-page__title">How we <span class="o-text-gradient">work</span></h1>
-
-      
-
-      <p class="elite-page__lead">A lightweight guide to engagements with Elitechnexus — not a product API, a clear process overview.</p>
-
+      <h2 class="elite-page__section-title">What we help with</h2>
+      <p class="elite-page__note">Elitechnexus LLC connects global engineers with full-time roles, paid project work, and interview prep. Employers get vetted candidates with evidence before they commit.</p>
       <div class="elite-page__grid">
-
         <div class="elite-page__card">
-
-          <h3>1. Scope</h3>
-
-          <p>Full-time placement or paid project teams. We align on skills, seniority, and communication needs first.</p>
-
+          <h3>Full-time jobs</h3>
+          <p>Long-term placement into US-facing teams. We align on skills, seniority, timezone overlap, and communication before introductions.</p>
         </div>
-
         <div class="elite-page__card">
-
-          <h3>2. Proof</h3>
-
-          <p>Candidates complete technical vetting — live coding, architecture, and screening — so employers see evidence early.</p>
-
+          <h3>Paid projects</h3>
+          <p>Scoped engagements for product builds, migrations, and surge capacity — with clear deliverables and review loops.</p>
         </div>
-
         <div class="elite-page__card">
-
-          <h3>3. Place</h3>
-
-          <p>We support interviews, compliant onboarding, and ongoing communication so both sides stay aligned.</p>
-
+          <h3>Interview coaching</h3>
+          <p>Live coding, system design, and behavioral prep so candidates show up ready and employers see signal early.</p>
         </div>
-
       </div>
 
+      <h2 class="elite-page__section-title">For candidates</h2>
+      <ol class="elite-page__steps">
+        <li><strong>Apply</strong> — Share your background, target roles, and availability through Get started / Login.</li>
+        <li><strong>Prove</strong> — Complete technical vetting: live coding, architecture, and screening so your skills are documented.</li>
+        <li><strong>Interview</strong> — We coach and coordinate introductions with hiring teams that match your profile.</li>
+        <li><strong>Place</strong> — Accept an offer or project. We stay in the loop through onboarding and early weeks.</li>
+      </ol>
+
+      <h2 class="elite-page__section-title">For companies</h2>
+      <ol class="elite-page__steps">
+        <li><strong>Scope</strong> — Tell us the role or project: stack, seniority, outcomes, and communication needs.</li>
+        <li><strong>Review proof</strong> — See vetted candidates with evidence from technical screening — not résumé-only guesses.</li>
+        <li><strong>Interview &amp; hire</strong> — Run your process with our coordination and interview support.</li>
+        <li><strong>Onboard</strong> — We help with compliant onboarding and keep both sides aligned after start.</li>
+      </ol>
+
+      <h2 class="elite-page__section-title">Proof first — what “vetted” means</h2>
+      <div class="elite-page__grid">
+        <div class="elite-page__card">
+          <h3>Live coding</h3>
+          <p>Hands-on problem solving under realistic constraints — not trivia quizzes alone.</p>
+        </div>
+        <div class="elite-page__card">
+          <h3>Architecture</h3>
+          <p>System design discussions so senior and mid-level talent can show judgment at scale.</p>
+        </div>
+        <div class="elite-page__card">
+          <h3>Screening signal</h3>
+          <p>Structured notes employers can review before calendars fill up with low-fit calls.</p>
+        </div>
+      </div>
+
+      <h2 class="elite-page__section-title">What to expect</h2>
+      <p class="elite-page__note">Timelines vary by role and market. Most placements move faster when scope is clear and proof is already complete. Side income and project matches depend on stack demand and candidate availability.</p>
+      <ul class="elite-page__list">
+        <li>Global talent into US tech workflows — with transparent communication.</li>
+        <li>No black-box product API — this page documents our human placement process.</li>
+        <li>Questions welcome anytime at steven.miller@elitechnexus.com or +1 (339) 365-7217.</li>
+      </ul>
+
       <p class="elite-page__cta-row">
-
-        <a class="elite-page__btn" href="/enterprise">Enterprise</a>
-
-        <a class="elite-page__btn elite-page__btn--ghost" href="/contact">Contact</a>
-
+        <a class="elite-page__btn" href="/login">Get started</a>
+        <a class="elite-page__btn elite-page__btn--ghost" href="/contact">Contact us</a>
+        <a class="elite-page__btn elite-page__btn--ghost" href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>
       </p>
-
-    
-
     </div>
-
   </section>
-
 </div> <div id="site-footer" class="o-section"> <div class="o-container"> <div id="site-footer__top" class="o-grid"> <div id="site-footer__top-left"> <h3 id="site-footer__top-left-title"><span class="elite-footer-line">Let's Build Together with</span><br><span class="o-text-gradient elite-footer-brand">Elitechnexus LLC!</span></h3> <a id="site-footer__top-left-button" href="/login"> <span>Get started</span> </a> </div> <div id="site-footer__top-right"> <div id="site-footer__top-right-wrapper"> <h4 class="site-footer__top-right-title is-enterprise">Get in touch</h4> <p id="site-footer__top-right-subtitle">Full-time jobs, paid projects, and side income — with proof first. Reach our team anytime.</p> <a class="site-footer__top-right-link is-enterprise" href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a> </div> </div> </div> <div id="site-footer__bottom" style="display:none!important" aria-hidden="true"></div>
 <div id="elite-legal-footer" aria-label="Site contact and links">
   <div class="o-container">
