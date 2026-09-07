@@ -525,7 +525,7 @@ html.elite-chatbot-active * {
             </label>
             <label>
               <span class="label">Phone number <em>*</em></span>
-              <input type="tel" name="phone" id="phone-input" placeholder="+1 (339) 365-7217" required autocomplete="tel" inputmode="tel">
+              <input type="tel" name="phone" id="phone-input" placeholder="+1 (347) 669-7747" required autocomplete="tel" inputmode="tel">
               <p class="field-hint" style="margin:0.35rem 0 0;font-size:0.8rem;opacity:0.7;">Start with your country code (e.g. <strong>+1</strong> → United States, <strong>+44</strong> → United Kingdom)</p>
               <p class="field-hint" id="phone-country-hint" hidden style="margin:0.25rem 0 0;font-size:0.8rem;color:#0a7a5c;"></p>
               <p class="field-error" data-error-for="phone"></p>
@@ -570,7 +570,7 @@ html.elite-chatbot-active * {
         </div>
         <p class="legal">
           By continuing, you agree to work with Elitechnexus LLC.
-          Questions? <a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13393657217">+1 (339) 365-7217</a>
+          Questions? <a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13476697747">+1 (347) 669-7747</a>
         </p>
       </div>
 
@@ -921,9 +921,9 @@ html.elite-chatbot-active * {
       return (
         "Phone number format is incorrect.\n\n" +
         "Please use a valid style, for example:\n" +
-        "• +1 (339) 365-7217\n" +
+        "• +1 (347) 669-7747\n" +
         "• +1 555 000 0000\n" +
-        "• 339-365-7217\n\n" +
+        "• 347-669-7747\n\n" +
         "Use 10–15 digits. Letters and special symbols (except + - ( ) . space) are not allowed."
       );
     }
@@ -1023,10 +1023,10 @@ html.elite-chatbot-active * {
 
       if (!phone) {
         setError(form.phone, "Phone number is required.");
-        alert("Phone number is required.\n\nPlease enter your phone number in a valid style, e.g. +1 (339) 365-7217.");
+        alert("Phone number is required.\n\nPlease enter your phone number in a valid style, e.g. +1 (347) 669-7747.");
         ok = false;
       } else if (!isValidPhone(phone)) {
-        setError(form.phone, "Enter a valid phone style (10–15 digits), e.g. +1 (339) 365-7217.");
+        setError(form.phone, "Enter a valid phone style (10–15 digits), e.g. +1 (347) 669-7747.");
         alert(phoneAlertMessage());
         ok = false;
       }
@@ -1144,5 +1144,97 @@ html.elite-chatbot-active * {
     }
   }, true);
 })();
-</script></body>
+</script><!-- elitechnexus-jotform-brand-hide -->
+<script id="elitechnexus-jotform-brand-hide">
+(function () {
+  var COVER_ID = "jf-branding-cover";
+  var AGENT_ROOT_ID = "JotformAgent-019fd78f69c0700086044c64fa3a2536ec27";
+
+  function getCover() {
+    var el = document.getElementById(COVER_ID);
+    if (el) return el;
+
+    el = document.createElement("div");
+    el.id = COVER_ID;
+    el.setAttribute("aria-hidden", "true");
+    el.style.cssText = [
+      "position:fixed",
+      "display:none",
+      "background:#ffffff",
+      "z-index:2147483647",
+      "pointer-events:auto",
+      "cursor:default",
+      "border-bottom-left-radius:16px",
+      "border-bottom-right-radius:16px",
+      "box-sizing:border-box",
+      "padding:6px 10px 10px",
+      "text-align:center",
+      "font-family:Segoe UI,system-ui,sans-serif",
+      "font-size:10px",
+      "line-height:1.4",
+      "color:#035C5F",
+      "user-select:none",
+      "overflow:visible",
+      "flex-direction:column",
+      "align-items:center",
+      "justify-content:flex-end",
+      "gap:2px"
+    ].join(";");
+
+    el.innerHTML =
+      '<div style="font-weight:600;white-space:nowrap;">Elitechnexus AI · Career &amp; Income Coach</div>' +
+      '<div style="font-weight:400;opacity:0.9;white-space:nowrap;">contact : +1 (347) 669-7747</div>';
+
+    function block(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    el.addEventListener("click", block, true);
+    el.addEventListener("mousedown", block, true);
+    el.addEventListener("mouseup", block, true);
+    el.addEventListener("pointerdown", block, true);
+    el.addEventListener("pointerup", block, true);
+
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function updateCover() {
+    var root = document.getElementById(AGENT_ROOT_ID);
+    var iframe = root && root.querySelector("iframe");
+    var cover = getCover();
+
+    if (!iframe) {
+      cover.style.display = "none";
+      return;
+    }
+
+    var r = iframe.getBoundingClientRect();
+    // Closed launcher is small — hide cover. Open chat panel is large.
+    if (r.height < 280 || r.width < 260) {
+      cover.style.display = "none";
+      return;
+    }
+
+    var stripH = 45.9;
+    var extendBelow = 6;
+    cover.style.display = "flex";
+    cover.style.left = r.left + "px";
+    cover.style.width = r.width + "px";
+    cover.style.top = (r.bottom - stripH) + "px";
+    cover.style.height = (stripH + extendBelow) + "px";
+  }
+
+  setInterval(updateCover, 250);
+  window.addEventListener("resize", updateCover);
+  window.addEventListener("scroll", updateCover, true);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateCover);
+  } else {
+    updateCover();
+  }
+})();
+</script>
+
+</body>
 </html>

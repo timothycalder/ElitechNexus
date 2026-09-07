@@ -181,7 +181,7 @@
 }
 </style><script id="elitechnexus-fullnav-fix">
 (function () {
-  var FULL = { contact: 1, login: 1, about: 1, careers: 1, blog: 1, docs: 1, deepwiki: 1 };
+  var FULL = { contact: 1, login: 1, about: 1, careers: 1, blog: 1, docs: 1, deepwiki: 1, terms: 1 };
   function pathOf(href) {
     try {
       var u = new URL(href, window.location.origin);
@@ -2264,7 +2264,7 @@ html.elite-chatbot-active * {
           <span class="elite-legal-footer__brand-name">Elitechnexus LLC</span>
         </div>
         <a class="elite-legal-footer__email" href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a>
-        <a class="elite-legal-footer__phone" href="tel:+13393657217">+1 (339) 365-7217</a>
+        <a class="elite-legal-footer__phone" href="tel:+13476697747">+1 (347) 669-7747</a>
         <p class="elite-legal-footer__copy">Copyright © 2026 Elitechnexus LLC.</p>
 </div>
       <div class="elite-legal-footer__col">
@@ -2274,12 +2274,13 @@ html.elite-chatbot-active * {
           <li><a href="/customers">Customers</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/contact">Contact us</a></li>
+          <li><a href="/terms">Terms &amp; Policies</a></li>
         </ul>
       </div>
       <div class="elite-legal-footer__col">
         <h4 class="elite-legal-footer__col-title">Careers &amp; Jobs</h4>
         <ul class="elite-legal-footer__links">
-          <li><a href="/careers">Careers</a></li>
+          <li><a href="/customers">Careers</a></li>
           <li><a href="/login">Full-time jobs</a></li>
           <li><a href="/login">Paid projects</a></li>
           <li><a href="/login">Interview coaching</a></li>
@@ -2521,4 +2522,96 @@ html.elite-chatbot-active * {
     }
   }, true);
 })();
-</script></body> </html>
+</script><!-- elitechnexus-jotform-brand-hide -->
+<script id="elitechnexus-jotform-brand-hide">
+(function () {
+  var COVER_ID = "jf-branding-cover";
+  var AGENT_ROOT_ID = "JotformAgent-019fd78f69c0700086044c64fa3a2536ec27";
+
+  function getCover() {
+    var el = document.getElementById(COVER_ID);
+    if (el) return el;
+
+    el = document.createElement("div");
+    el.id = COVER_ID;
+    el.setAttribute("aria-hidden", "true");
+    el.style.cssText = [
+      "position:fixed",
+      "display:none",
+      "background:#ffffff",
+      "z-index:2147483647",
+      "pointer-events:auto",
+      "cursor:default",
+      "border-bottom-left-radius:16px",
+      "border-bottom-right-radius:16px",
+      "box-sizing:border-box",
+      "padding:6px 10px 10px",
+      "text-align:center",
+      "font-family:Segoe UI,system-ui,sans-serif",
+      "font-size:10px",
+      "line-height:1.4",
+      "color:#035C5F",
+      "user-select:none",
+      "overflow:visible",
+      "flex-direction:column",
+      "align-items:center",
+      "justify-content:flex-end",
+      "gap:2px"
+    ].join(";");
+
+    el.innerHTML =
+      '<div style="font-weight:600;white-space:nowrap;">Elitechnexus AI · Career &amp; Income Coach</div>' +
+      '<div style="font-weight:400;opacity:0.9;white-space:nowrap;">contact : +1 (347) 669-7747</div>';
+
+    function block(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    el.addEventListener("click", block, true);
+    el.addEventListener("mousedown", block, true);
+    el.addEventListener("mouseup", block, true);
+    el.addEventListener("pointerdown", block, true);
+    el.addEventListener("pointerup", block, true);
+
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function updateCover() {
+    var root = document.getElementById(AGENT_ROOT_ID);
+    var iframe = root && root.querySelector("iframe");
+    var cover = getCover();
+
+    if (!iframe) {
+      cover.style.display = "none";
+      return;
+    }
+
+    var r = iframe.getBoundingClientRect();
+    // Closed launcher is small — hide cover. Open chat panel is large.
+    if (r.height < 280 || r.width < 260) {
+      cover.style.display = "none";
+      return;
+    }
+
+    var stripH = 45.9;
+    var extendBelow = 6;
+    cover.style.display = "flex";
+    cover.style.left = r.left + "px";
+    cover.style.width = r.width + "px";
+    cover.style.top = (r.bottom - stripH) + "px";
+    cover.style.height = (stripH + extendBelow) + "px";
+  }
+
+  setInterval(updateCover, 250);
+  window.addEventListener("resize", updateCover);
+  window.addEventListener("scroll", updateCover, true);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateCover);
+  } else {
+    updateCover();
+  }
+})();
+</script>
+
+</body> </html>

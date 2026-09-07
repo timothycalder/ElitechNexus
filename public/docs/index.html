@@ -4,27 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Docs | Elitechnexus</title>
-<meta name="description" content="Guide to Elitechnexus jobs, paid projects, and proof-first placement for candidates and companies.">
+<meta name="description" content="Detailed Elitechnexus learning guide — how proof-first placement works for candidates and companies: jobs, paid projects, coaching, and onboarding.">
 <link rel="canonical" href="/docs/">
 <link rel="icon" href="/favicon.ico?v=18" sizes="any">
 <link rel="icon" href="/favicon-48.png?v=18" type="image/png" sizes="48x48">
 <link rel="icon" href="/favicon-96.png?v=18" type="image/png" sizes="96x96">
 <link rel="apple-touch-icon" href="/favicon-192.png?v=18" type="image/png" sizes="180x180">
 <meta property="og:title" content="Docs | How Elitechnexus works">
-<meta property="og:description" content="Guide to Elitechnexus jobs, paid projects, and proof-first placement for candidates and companies.">
+<meta property="og:description" content="Detailed guide to Elitechnexus jobs, paid projects, and proof-first placement.">
 <meta property="og:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14">
 <style>
   @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
 
   :root {
-    --bg: #07111c;
-    --bg-2: #0d1a2b;
-    --panel: rgba(16, 28, 48, 0.92);
-    --ink: #e8f0f8;
-    --muted: #9bb0c4;
-    --line: rgba(120, 150, 180, 0.22);
-    --accent: #5eead4;
-    --accent-2: #38bdf8;
+    --bg: #ffffff;
+    --ink: #142033;
+    --muted: #4a6075;
+    --line: rgba(30, 60, 90, 0.14);
+    --accent: #0d9488;
+    --accent-2: #0284c7;
   }
 
   * { box-sizing: border-box; }
@@ -34,11 +32,12 @@
     font-family: "DM Sans", system-ui, sans-serif;
     color: var(--ink);
     background:
-      radial-gradient(ellipse 70% 50% at 10% 0%, rgba(56,189,248,.14), transparent 55%),
-      radial-gradient(ellipse 55% 45% at 95% 15%, rgba(94,234,212,.1), transparent 50%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      radial-gradient(ellipse 70% 45% at 8% 0%, rgba(14,165,233,.08), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 95% 8%, rgba(20,184,166,.07), transparent 50%),
+      linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
   }
-  a { color: inherit; text-decoration: none; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
   img { display: block; }
 
   .top {
@@ -50,8 +49,8 @@
     justify-content: space-between;
     padding: 1rem clamp(1rem, 4vw, 2rem);
     backdrop-filter: blur(12px);
-    background: rgba(7,17,28,.72);
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px solid var(--line);
   }
   .top__brand {
     display: inline-flex;
@@ -60,7 +59,10 @@
     font-family: Syne, sans-serif;
     font-weight: 700;
     font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
   }
+  .top__brand:hover { text-decoration: none; color: var(--ink); }
   .top__brand img { width: 2.1rem; height: 2.1rem; }
   .top__nav {
     display: flex;
@@ -70,11 +72,12 @@
     justify-content: flex-end;
   }
   .top__nav a {
-    color: #c5d4e4;
+    color: #334155;
     font-size: .92rem;
     font-weight: 600;
+    text-decoration: none;
   }
-  .top__nav a:hover { color: var(--accent); }
+  .top__nav a:hover { color: var(--accent); text-decoration: none; }
   .top__cta {
     display: inline-flex;
     align-items: center;
@@ -83,8 +86,9 @@
     border-radius: 999px;
     font-weight: 700;
     font-size: .9rem;
-    color: #07131f !important;
-    background: linear-gradient(135deg, #5eead4, #38bdf8);
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #0d9488, #0284c7);
+    text-decoration: none !important;
   }
 
   .container {
@@ -100,7 +104,7 @@
     font-size: .78rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: #7b92a8;
+    color: #64748b;
     font-weight: 650;
   }
   .hero h1 {
@@ -109,21 +113,42 @@
     line-height: 1.22;
     font-weight: 700;
     letter-spacing: -0.015em;
+    color: #0f172a;
   }
   .hero h1 span {
     display: inline-block;
-    background: linear-gradient(135deg, #5eead4, #38bdf8 55%, #60a5fa);
+    background: linear-gradient(135deg, #0d9488, #0284c7 55%, #2563eb);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .hero p {
     margin: 0;
-    max-width: 52ch;
+    max-width: 58ch;
     color: var(--muted);
     font-size: clamp(1.02rem, 1.6vw, 1.15rem);
     line-height: 1.55;
   }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin: 0 0 2rem;
+  }
+  .toc a {
+    display: inline-flex;
+    padding: .45rem .85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #ffffff;
+    color: #1e293b;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  .toc a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
   .section {
     padding: 0 0 clamp(2rem, 5vw, 3rem);
@@ -132,19 +157,37 @@
     margin: 0 0 .85rem;
     font-size: clamp(1.35rem, 2.4vw, 1.7rem);
     font-weight: 700;
-    color: #f2f6fb;
+    color: #0f172a;
   }
-  .section > p {
-    margin: 0 0 1.25rem;
-    max-width: 62ch;
-    color: var(--muted);
-    line-height: 1.55;
+  .section h3 {
+    margin: 1.35rem 0 .55rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #1e293b;
   }
+  .section > p,
+  .section p {
+    margin: 0 0 1rem;
+    max-width: 68ch;
+    color: #334155;
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+  .section ul, .section ol {
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+    max-width: 68ch;
+    color: #334155;
+    line-height: 1.65;
+  }
+  .section li { margin-bottom: .5rem; }
+  .section strong { color: #0f172a; }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
+    margin: 0 0 1.25rem;
   }
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; }
@@ -152,42 +195,43 @@
   }
 
   .card {
-    background: var(--panel);
+    background: #ffffff;
     border: 1px solid var(--line);
     border-radius: 1.1rem;
     padding: 1.25rem 1.2rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
   }
   .card h3 {
     margin: 0 0 .45rem;
     font-size: 1.05rem;
     font-weight: 700;
-    color: #f2f6fb;
+    color: #0f172a;
   }
   .card p {
     margin: 0;
-    color: var(--muted);
+    color: #475569;
     font-size: .95rem;
-    line-height: 1.5;
+    line-height: 1.55;
+    max-width: none;
   }
 
-  .steps {
-    margin: 0;
-    padding-left: 1.2rem;
-    max-width: 62ch;
-    color: #c5d4e2;
-    line-height: 1.65;
+  .callout {
+    margin: 0 0 1.25rem;
+    padding: 1.1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(13,148,136,.22);
+    background: linear-gradient(135deg, rgba(13,148,136,.07), rgba(2,132,199,.05));
+    color: #1e293b;
+    line-height: 1.55;
   }
-  .steps li { margin-bottom: .55rem; }
-  .steps strong { color: #f2f6fb; }
-
-  .bullets {
-    margin: 0;
-    padding-left: 1.2rem;
-    max-width: 62ch;
-    color: #c5d4e2;
-    line-height: 1.65;
+  .callout strong {
+    display: block;
+    margin-bottom: .35rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
-  .bullets li { margin-bottom: .45rem; }
 
   .cta-row {
     display: flex;
@@ -203,13 +247,15 @@
     border-radius: 999px;
     font-weight: 700;
     font-size: .95rem;
-    background: linear-gradient(135deg, #5eead4, #38bdf8);
-    color: #07131f;
+    background: linear-gradient(135deg, #0d9488, #0284c7);
+    color: #ffffff;
+    text-decoration: none;
   }
+  .btn:hover { text-decoration: none; opacity: .95; }
   .btn--ghost {
-    background: transparent;
-    color: #e8f0f8;
-    border: 1px solid rgba(148, 180, 210, 0.35);
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid var(--line);
   }
   .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -219,10 +265,11 @@
     gap: .75rem 1.5rem;
     justify-content: space-between;
     padding: 1.25rem clamp(1rem, 4vw, 2rem) 2rem;
-    border-top: 1px solid rgba(255,255,255,.06);
-    color: #8fa6bc;
+    border-top: 1px solid var(--line);
+    color: #64748b;
     font-size: .9rem;
   }
+  .footer a { color: #64748b; }
   .footer a:hover { color: var(--accent); }
 </style>
 </head>
@@ -243,90 +290,456 @@
 
   <section class="hero">
     <div class="container">
-      <p class="hero__eyebrow">Docs</p>
+      <p class="hero__eyebrow">Learning &amp; Docs</p>
       <h1>How Elitechnexus <span>works</span></h1>
-      <p>A plain-language guide to jobs, paid projects, and proof-first placement — for talent and for companies hiring into US tech teams.</p>
+      <p>A comprehensive process guide covering services, screening, matching, interviews, onboarding, timelines, and checklists — for talent and for companies hiring into US tech teams.</p>
     </div>
   </section>
 
   <main class="container">
-    <section class="section">
-      <h2>What we help with</h2>
-      <p>Elitechnexus LLC connects global engineers with full-time roles, paid project work, and interview prep. Employers get vetted candidates with evidence before they commit.</p>
+    <nav class="toc" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#who">Who it’s for</a>
+      <a href="#services">Services</a>
+      <a href="#candidates">Candidates</a>
+      <a href="#companies">Companies</a>
+      <a href="#proof">Proof first</a>
+      <a href="#matching">Matching</a>
+      <a href="#interviews">Interviews</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#timeline">Timelines</a>
+      <a href="#checklist">Checklists</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <section class="section" id="overview">
+      <h2>1. Overview</h2>
+      <p>Elitechnexus LLC is a proof-first placement company. We help people turn skills into full-time jobs, paid project work, and lasting income — and we help companies hire global engineering talent with evidence before they commit calendar time or headcount budget.</p>
+      <p>This Docs page is a process guide, not a product API. It explains what happens after you apply, how screening works, what companies receive, how matching and interviews are coordinated, and what both sides should expect from kickoff through early onboarding.</p>
+      <div class="callout">
+        <strong>Core idea</strong>
+        Proof before placement. Candidates demonstrate skill through live coding, architecture, and structured screening. Employers review that signal early — so introductions are higher-fit and less wasteful for everyone.
+      </div>
+      <h3>1.1 What problem we solve</h3>
+      <ul>
+        <li><strong>For talent:</strong> Getting into US-facing roles is hard when employers cannot tell skill from a résumé alone, and interview loops favor people who already know the process.</li>
+        <li><strong>For companies:</strong> Sourcing international talent can create low-signal interviews, timezone surprises, and expensive false starts when proof comes too late.</li>
+        <li><strong>For both:</strong> Elitechnexus puts proof earlier — so time spent interviewing is spent on candidates who already showed technical signal.</li>
+      </ul>
+      <h3>1.2 What this guide covers</h3>
+      <ul>
+        <li>Service paths: full-time jobs, paid projects, interview coaching</li>
+        <li>Candidate journey from apply → prove → interview → place</li>
+        <li>Company journey from scope → review proof → hire → onboard</li>
+        <li>How matching works, what “good fit” means, and realistic timelines</li>
+        <li>Practical checklists and FAQ</li>
+      </ul>
+    </section>
+
+    <section class="section" id="who">
+      <h2>2. Who Elitechnexus is for</h2>
+      <h3>2.1 Candidates who usually fit well</h3>
+      <ul>
+        <li>Software engineers, full-stack / backend / frontend / mobile / data / DevOps profiles seeking US-facing work</li>
+        <li>People who can communicate clearly in English in writing and on calls</li>
+        <li>Candidates willing to complete technical screening and act on feedback</li>
+        <li>Engineers open to remote or hybrid collaboration across timezones</li>
+        <li>People who want either stable full-time roles, scoped paid projects, or both over time</li>
+      </ul>
+      <h3>2.2 Companies who usually fit well</h3>
+      <ul>
+        <li>Startups and product teams that need vetted engineers quickly</li>
+        <li>Companies with clear role or project outcomes (not “send anyone who codes”)</li>
+        <li>Teams that can interview within a defined loop and give timely feedback</li>
+        <li>Organizations open to global talent when proof and communication standards are met</li>
+      </ul>
+      <h3>2.3 What we are not</h3>
+      <ul>
+        <li>Not a job board that mass-blasts résumés without screening</li>
+        <li>Not an “AI employee” product that replaces your engineering team</li>
+        <li>Not a visa law firm — immigration/compliance specifics depend on the engagement and jurisdiction</li>
+        <li>Not a guarantee of offers, salaries, or project awards</li>
+      </ul>
+    </section>
+
+    <section class="section" id="services">
+      <h2>3. Services in depth</h2>
+      <p>Most engagements fall into one of three paths. Many candidates use more than one over time (for example coaching first, then full-time placement).</p>
       <div class="grid">
         <article class="card">
           <h3>Full-time jobs</h3>
-          <p>Long-term placement into US-facing teams. We align on skills, seniority, timezone overlap, and communication before introductions.</p>
+          <p>Long-term placement into US-facing teams. We align on skills, seniority, timezone overlap, English communication, and role goals before introductions.</p>
         </article>
         <article class="card">
           <h3>Paid projects</h3>
-          <p>Scoped engagements for product builds, migrations, and surge capacity — with clear deliverables and review loops.</p>
+          <p>Scoped engagements for product builds, migrations, feature delivery, and surge capacity — with clear deliverables, review loops, and defined end conditions.</p>
         </article>
         <article class="card">
           <h3>Interview coaching</h3>
-          <p>Live coding, system design, and behavioral prep so candidates show up ready and employers see signal early.</p>
+          <p>Live coding, system design, résumé/story polish, and behavioral prep so candidates show up ready and employers see cleaner signal in interviews.</p>
         </article>
+      </div>
+
+      <h3>3.1 Full-time placement — deeper detail</h3>
+      <p>Full-time tracks are for engineers who want stable US-facing roles. A typical lifecycle looks like:</p>
+      <ol>
+        <li>Profile intake and goal setting (target titles, stacks, comp expectations if shared, notice period)</li>
+        <li>Proof-first screening and coaching recommendations if gaps appear</li>
+        <li>Role matching against active company needs</li>
+        <li>Introduction + interview coordination</li>
+        <li>Offer discussion support (process clarity, timeline pressure, competing options)</li>
+        <li>Early onboarding check-ins to reduce first-month friction</li>
+      </ol>
+      <p>We optimize for mutual fit: stack match, seniority honesty, communication style, and realistic timezone overlap. A “fast intro” that is a bad fit wastes both sides.</p>
+
+      <h3>3.2 Paid projects — deeper detail</h3>
+      <p>Project tracks are for defined outcomes — not open-ended staffing without scope. Before kickoff we try to lock:</p>
+      <ul>
+        <li>Problem statement and success criteria</li>
+        <li>Required stack and seniority</li>
+        <li>Timeline, milestones, and review cadence</li>
+        <li>Communication channel and expected response times</li>
+        <li>Who accepts work (product owner / tech lead)</li>
+      </ul>
+      <p>Candidates who succeed on projects usually show strong execution, clear written updates, comfort asking clarifying questions, and reliability under remote collaboration.</p>
+
+      <h3>3.3 Interview coaching — deeper detail</h3>
+      <p>Coaching is for candidates who need sharper interview performance before or during placement. Sessions may include:</p>
+      <ul>
+        <li>Live coding under time pressure (approach, testing, communication)</li>
+        <li>System design tradeoffs and whiteboard structure</li>
+        <li>Behavioral stories (impact, ownership, conflict, learning)</li>
+        <li>Résumé and project storytelling that maps to employer signal</li>
+        <li>Mock interviews with written feedback and a practice plan</li>
+      </ul>
+      <p>Coaching can stand alone or run in parallel with active matching when a candidate is close but needs polish.</p>
+
+      <h3>3.4 Enterprise / team hiring</h3>
+      <p>Some companies need multiple hires or recurring project capacity. In those cases we can align on a hiring plan: role ladder, batch screening, shared scorecards, and a repeating introduction cadence. Start via <a href="/enterprise">Enterprise</a> or <a href="/contact">Contact</a>.</p>
+    </section>
+
+    <section class="section" id="candidates">
+      <h2>4. For candidates — full journey</h2>
+      <p>If you are seeking a job, project, or coaching support, this is the detailed path.</p>
+
+      <h3>4.1 Prepare before you apply</h3>
+      <ul>
+        <li>Decide your primary goal: full-time, paid projects, coaching, or a mix</li>
+        <li>List 1–3 target role titles and your strongest stacks</li>
+        <li>Gather proof of work: GitHub, portfolio, shipped products, architecture write-ups, or detailed project summaries</li>
+        <li>Know your realistic timezone overlap and weekly availability windows</li>
+        <li>Note constraints early (notice period, exclusive interviews, travel limits)</li>
+      </ul>
+
+      <h3>4.2 Apply</h3>
+      <ul>
+        <li>Submit through <a href="/login">Get started / Login</a> or <a href="/contact">Contact</a></li>
+        <li>Share background, target roles, seniority, availability, and contact details</li>
+        <li>Include links that show real work — not only claims on a résumé</li>
+        <li>Be honest about English comfort and communication style; overselling creates failed interviews later</li>
+      </ul>
+      <p>After apply, we may ask clarifying questions before scheduling screening. Incomplete answers slow everything down.</p>
+
+      <h3>4.3 Prove (technical vetting)</h3>
+      <ul>
+        <li>Complete live coding and/or take-home style tasks when assigned</li>
+        <li>Join architecture / system design discussion appropriate to your level</li>
+        <li>Participate in structured screening so we can document strengths and risks</li>
+        <li>If gaps are clear, we may recommend coaching before active introductions</li>
+      </ul>
+      <p>Treat screening like a real interview: quiet space, working setup, clear communication, and follow-up notes if asked.</p>
+
+      <h3>4.4 Matching &amp; introductions</h3>
+      <ul>
+        <li>We map your proof profile to open roles and projects</li>
+        <li>When there is a fit, we introduce you with context — not a cold résumé dump</li>
+        <li>You should confirm interest quickly and flag conflicts (other offers, unavailable dates)</li>
+      </ul>
+
+      <h3>4.5 Interview loop</h3>
+      <ul>
+        <li>We help you prepare for the company’s process shape (screens, technical rounds, culture, final)</li>
+        <li>Show up on time, confirm tools/links early, and send thank-you / follow-ups when appropriate</li>
+        <li>Share feedback with us after each round so we can coach and re-match intelligently</li>
+        <li>You own performance; we amplify preparation and fit — we do not guarantee offers</li>
+      </ul>
+
+      <h3>4.6 Offer, project kickoff, and early weeks</h3>
+      <ul>
+        <li>Review scope, compensation (if applicable), start date, and expectations carefully</li>
+        <li>Ask questions before accepting — ambiguity is cheaper to resolve pre-start</li>
+        <li>In the first weeks, prioritize communication rhythm, tool access, and first deliverable clarity</li>
+        <li>Escalate blockers early through the agreed channel (manager + Elitechnexus contact when relevant)</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Candidate tip</strong>
+        Fastest progress usually comes from a clear target role, completed proof steps, and reliable response times. Incomplete profiles and slow follow-up slow matching more than almost anything else.
       </div>
     </section>
 
-    <section class="section">
-      <h2>For candidates</h2>
-      <ol class="steps">
-        <li><strong>Apply</strong> — Share your background, target roles, and availability through Get started / Login.</li>
-        <li><strong>Prove</strong> — Complete technical vetting: live coding, architecture, and screening so your skills are documented.</li>
-        <li><strong>Interview</strong> — We coach and coordinate introductions with hiring teams that match your profile.</li>
-        <li><strong>Place</strong> — Accept an offer or project. We stay in the loop through onboarding and early weeks.</li>
-      </ol>
+    <section class="section" id="companies">
+      <h2>5. For companies — full journey</h2>
+      <p>If you are hiring full-time talent or staffing a paid project, here is the detailed engagement path.</p>
+
+      <h3>5.1 Write a usable brief</h3>
+      <p>Before we source, we need enough clarity to filter honestly. A strong brief includes:</p>
+      <ul>
+        <li>Role or project title and business outcome</li>
+        <li>Must-have skills vs nice-to-haves</li>
+        <li>Seniority bar and example responsibilities</li>
+        <li>Timezone / overlap requirements</li>
+        <li>Interview process outline and decision owner</li>
+        <li>Urgency and target start date</li>
+        <li>For projects: milestones, acceptance criteria, and who reviews work</li>
+      </ul>
+
+      <h3>5.2 Scope alignment call</h3>
+      <ul>
+        <li>We confirm whether this is full-time, project, or a blended plan</li>
+        <li>We pressure-test unrealistic “unicorn” requirements and suggest tradeoffs</li>
+        <li>We agree on what “good enough to introduce” looks like</li>
+      </ul>
+
+      <h3>5.3 Review proof packets</h3>
+      <ul>
+        <li>Receive candidates with screening evidence — not résumé-only packets</li>
+        <li>Review live-coding / architecture notes and structured signal before deep interviews</li>
+        <li>Request tighter filters or more candidates if the first set is off-target</li>
+        <li>Give fast pass/proceed decisions so strong candidates do not go cold</li>
+      </ul>
+
+      <h3>5.4 Interview &amp; hire</h3>
+      <ul>
+        <li>Run your process with our coordination support (scheduling, candidate warmth, blocker surfacing)</li>
+        <li>Share written feedback after rounds — “no” without reason makes rematching guesswork</li>
+        <li>Final hiring decisions remain yours</li>
+      </ul>
+
+      <h3>5.5 Kickoff &amp; early performance</h3>
+      <ul>
+        <li>Set first-week goals, access, and communication norms before day one when possible</li>
+        <li>Nominate an internal owner for questions and priorities</li>
+        <li>Use early check-ins to catch mismatch before it becomes expensive</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Company tip</strong>
+        The sharper your scope (stack, seniority, outcomes, timezone), the faster we can send high-fit candidates with usable proof. Vague briefs create slow loops and weaker interviews.
+      </div>
     </section>
 
-    <section class="section">
-      <h2>For companies</h2>
-      <ol class="steps">
-        <li><strong>Scope</strong> — Tell us the role or project: stack, seniority, outcomes, and communication needs.</li>
-        <li><strong>Review proof</strong> — See vetted candidates with evidence from technical screening — not résumé-only guesses.</li>
-        <li><strong>Interview &amp; hire</strong> — Run your process with our coordination and interview support.</li>
-        <li><strong>Onboard</strong> — We help with compliant onboarding and keep both sides aligned after start.</li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <h2>Proof first — what “vetted” means</h2>
+    <section class="section" id="proof">
+      <h2>6. Proof first — what “vetted” means</h2>
+      <p>“Vetted” at Elitechnexus means a candidate has gone through structured technical evaluation with documented signal — not that every employer will hire them, and not that every edge case is eliminated.</p>
       <div class="grid">
         <article class="card">
           <h3>Live coding</h3>
-          <p>Hands-on problem solving under realistic constraints — not trivia quizzes alone.</p>
+          <p>Hands-on problem solving under realistic constraints. We look for approach quality, debugging habits, and communication — not trivia memorization alone.</p>
         </article>
         <article class="card">
           <h3>Architecture</h3>
-          <p>System design discussions so senior and mid-level talent can show judgment at scale.</p>
+          <p>System design discussions so mid-level and senior talent can show judgment: tradeoffs, scalability, failure modes, and clarity under questioning.</p>
         </article>
         <article class="card">
           <h3>Screening signal</h3>
-          <p>Structured notes employers can review before calendars fill up with low-fit calls.</p>
+          <p>Structured notes employers can review before calendars fill with low-fit calls — strengths, risks, and suggested interview focus areas.</p>
         </article>
       </div>
+
+      <h3>6.1 What we evaluate</h3>
+      <ul>
+        <li>Problem decomposition and correctness under time constraints</li>
+        <li>Code clarity, testing instinct, and ability to recover from mistakes</li>
+        <li>System thinking: APIs, data, reliability, tradeoffs, and operational awareness</li>
+        <li>Communication: can they explain decisions to a hiring partner?</li>
+        <li>Level calibration: junior / mid / senior expectations mapped honestly</li>
+      </ul>
+
+      <h3>6.2 What employers typically receive</h3>
+      <ul>
+        <li>Candidate profile summary and target role fit</li>
+        <li>Screening highlights and risk notes</li>
+        <li>Suggested interview focus areas (so your loop is efficient)</li>
+        <li>Availability / timezone / start constraints when known</li>
+      </ul>
+
+      <h3>6.3 What proof is not</h3>
+      <ul>
+        <li>Not a guarantee of production perfection on day one</li>
+        <li>Not a substitute for your own interview bar and culture fit</li>
+        <li>Not a permanent score forever — skills and role targets change; we re-check when needed</li>
+        <li>Not a black-box “AI employee” product metric — this is a human placement process with technical evidence</li>
+      </ul>
     </section>
 
-    <section class="section">
-      <h2>What to expect</h2>
-      <p>Timelines vary by role and market. Most placements move faster when scope is clear and proof is already complete.</p>
-      <ul class="bullets">
-        <li>Global talent into US tech workflows — with transparent communication.</li>
-        <li>This is our placement process guide — not a product API reference.</li>
-        <li>Questions: <a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> or <a href="tel:+13393657217">+1 (339) 365-7217</a>.</li>
+    <section class="section" id="matching">
+      <h2>7. How matching works</h2>
+      <p>Matching is where proof meets demand. We do not optimize for “most introductions.” We optimize for introductions that deserve interview time.</p>
+      <h3>7.1 Signals we weigh</h3>
+      <ul>
+        <li>Stack and domain overlap with the role/project</li>
+        <li>Seniority alignment (under-leveling and over-leveling both fail)</li>
+        <li>Timezone overlap and communication reliability</li>
+        <li>Screening strength vs the company’s bar</li>
+        <li>Motivation fit (full-time vs project; product vs infrastructure; startup pace vs process)</li>
+        <li>Timing: notice periods, competing processes, project start windows</li>
       </ul>
+      <h3>7.2 Why some strong candidates wait</h3>
+      <ul>
+        <li>No current role matches their stack/seniority</li>
+        <li>Proof is incomplete or coaching was recommended first</li>
+        <li>Company briefs are paused or budgets shifted</li>
+        <li>Candidate availability windows do not overlap active needs</li>
+      </ul>
+      <p>Waiting with an incomplete profile is different from waiting while fully proofed. Fully proofed candidates move first when a fit opens.</p>
+    </section>
+
+    <section class="section" id="interviews">
+      <h2>8. Interviews — how we support both sides</h2>
+      <h3>8.1 What candidates should do</h3>
+      <ul>
+        <li>Confirm interview logistics 24 hours ahead (link, timezone, tools)</li>
+        <li>Prepare stories and systems you’ve actually built — depth beats buzzwords</li>
+        <li>Ask clarifying questions; silence under ambiguity is a common failure mode</li>
+        <li>Send concise follow-up if appropriate; tell Elitechnexus how it went the same day</li>
+      </ul>
+      <h3>8.2 What companies should do</h3>
+      <ul>
+        <li>Share the loop early (number of rounds, topics, decision timeline)</li>
+        <li>Use scorecards so feedback is comparable across candidates</li>
+        <li>Avoid last-minute cancellations when possible — strong candidates churn</li>
+        <li>Decide quickly after final rounds; slow decisions lose people</li>
+      </ul>
+      <h3>8.3 Common failure patterns we try to prevent</h3>
+      <ul>
+        <li>Résumé-only intros that waste three interviews</li>
+        <li>Unclear project scope that looks like a full-time job in disguise (or vice versa)</li>
+        <li>Timezone mismatch discovered after verbal interest</li>
+        <li>Interview processes that test trivia unrelated to the actual work</li>
+      </ul>
+    </section>
+
+    <section class="section" id="onboarding">
+      <h2>9. Onboarding &amp; first 30 days</h2>
+      <p>Placement is not finished at “offer accepted.” Early weeks determine whether the match compounds or collapses.</p>
+      <h3>9.1 Before day one</h3>
+      <ul>
+        <li>Accounts, repos, chat, and docs access planned</li>
+        <li>Named buddy / manager for questions</li>
+        <li>First deliverable or learning plan written down</li>
+        <li>Meeting cadence agreed (standups, 1:1s, async updates)</li>
+      </ul>
+      <h3>9.2 First two weeks</h3>
+      <ul>
+        <li>Ship something small and visible early when possible</li>
+        <li>Confirm understanding of priorities in writing</li>
+        <li>Surface tooling or context gaps immediately</li>
+      </ul>
+      <h3>9.3 Days 15–30</h3>
+      <ul>
+        <li>Review whether outcomes match the original brief</li>
+        <li>Adjust scope if reality differs from the job/project description</li>
+        <li>Decide whether additional coaching, clearer ownership, or rematch discussion is needed</li>
+      </ul>
+    </section>
+
+    <section class="section" id="timeline">
+      <h2>10. Timelines &amp; communication norms</h2>
+      <p>Timelines vary by role scarcity, candidate readiness, and how clear the scope is. Practical ranges:</p>
+      <ul>
+        <li><strong>Intake to first screening:</strong> often a few days when profiles are complete and calendars align</li>
+        <li><strong>Proof complete to first introduction:</strong> faster when a matching open role already exists; longer for niche stacks</li>
+        <li><strong>Introduction to offer / project kickoff:</strong> driven by the company’s interview loop and decision speed (often 1–4+ weeks)</li>
+        <li><strong>Coaching-only tracks:</strong> can start quickly once goals and session cadence are set</li>
+      </ul>
+      <h3>10.1 What speeds things up</h3>
+      <ul>
+        <li>Complete profiles and fast replies</li>
+        <li>Clear company briefs with real must-haves</li>
+        <li>Finished proof steps before aggressive matching</li>
+        <li>Same-day interview feedback</li>
+      </ul>
+      <h3>10.2 What slows things down</h3>
+      <ul>
+        <li>Missing links / vague experience claims</li>
+        <li>“Urgent” company needs with no interview slots</li>
+        <li>Candidates ghosting screens or changing goals mid-loop</li>
+        <li>Scope changes after introductions have already started</li>
+      </ul>
+      <h3>10.3 Communication norms</h3>
+      <ul>
+        <li>Respond to scheduling and feedback requests promptly</li>
+        <li>Flag blockers early (visa constraints, notice periods, conflicting offers, shifting project scope)</li>
+        <li>Keep one clear point of contact when possible</li>
+        <li>Prefer written summaries after important calls so both sides share the same reality</li>
+      </ul>
+    </section>
+
+    <section class="section" id="checklist">
+      <h2>11. Checklists</h2>
+      <h3>11.1 Candidate readiness checklist</h3>
+      <ul>
+        <li>Target role(s) and stack written clearly</li>
+        <li>Résumé + proof links ready</li>
+        <li>Timezone / availability known</li>
+        <li>Screening scheduled or completed</li>
+        <li>Interview environment tested (camera, mic, IDE, network)</li>
+        <li>Constraints disclosed (notice period, exclusivity, travel)</li>
+      </ul>
+      <h3>11.2 Company readiness checklist</h3>
+      <ul>
+        <li>Role/project outcome defined</li>
+        <li>Must-have skills listed (short list beats long fantasy list)</li>
+        <li>Seniority and timezone requirements set</li>
+        <li>Interview loop + decision owner named</li>
+        <li>Budget / engagement type confirmed at a high level</li>
+        <li>Onboarding owner identified for week one</li>
+      </ul>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>12. FAQ</h2>
+
+      <h3>Do you guarantee a job or project?</h3>
+      <p>No. We run a serious process and improve odds through proof and fit — but offers and project awards are always decided by the hiring company or client.</p>
+
+      <h3>How technical is the screening?</h3>
+      <p>It is meant to be practical and level-appropriate. Expect hands-on problem solving and design discussion, not only buzzword quizzes. Exact format depends on the role track.</p>
+
+      <h3>Can I do coaching without applying for jobs?</h3>
+      <p>Yes. Coaching can be standalone. Many people later move into matching once interview signal is stronger.</p>
+
+      <h3>Is this only for engineers outside the US?</h3>
+      <p>We specialize in connecting global talent into US-facing workflows. Exact eligibility depends on the role, client needs, and applicable compliance requirements for that engagement.</p>
+
+      <h3>Can companies send a role without a long RFP?</h3>
+      <p>Yes. Start with stack, seniority, outcomes, timezone, and urgency. We refine from there. Use <a href="/contact">Contact</a> or <a href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>.</p>
+
+      <h3>What if an introduction is a bad fit?</h3>
+      <p>Tell us quickly with specifics. Better feedback helps rematch. Ghosting after a mismatch slows the next good intro.</p>
+
+      <h3>Who owns employment / contractor paperwork?</h3>
+      <p>Depends on the engagement structure and written agreement. Website Docs explain process; binding commercial and compliance terms are handled case by case. See also <a href="/terms">Terms &amp; Policies</a>.</p>
+
+      <h3>Where are legal, security, and privacy details?</h3>
+      <p>See <a href="/terms">Terms &amp; Policies</a> for Security Policy, Terms of Service, and Privacy Policy.</p>
+
+      <h3>Who do I email with questions?</h3>
+      <p><a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13476697747">+1 (347) 669-7747</a></p>
     </section>
 
     <div class="cta-row">
       <a class="btn" href="/login">Get started</a>
       <a class="btn btn--ghost" href="/contact">Contact us</a>
       <a class="btn btn--ghost" href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>
+      <a class="btn btn--ghost" href="/terms">Terms &amp; Policies</a>
     </div>
   </main>
 
   <footer class="footer">
-    <span>© Elitechnexus LLC</span>
-    <span><a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13393657217">+1 (339) 365-7217</a></span>
+    <span>© Elitechnexus LLC · <a href="/terms">Terms &amp; Policies</a></span>
+    <span><a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13476697747">+1 (347) 669-7747</a></span>
   </footer>
 </body>
 </html>

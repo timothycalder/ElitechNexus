@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Policies | Elitechnexus</title>
+<meta name="description" content="Detailed Elitechnexus LLC Security Policy, Terms of Service, and Privacy Policy for candidates, companies, and website users.">
+<link rel="canonical" href="/terms/">
+<link rel="icon" href="/favicon.ico?v=18" sizes="any">
+<link rel="icon" href="/favicon-48.png?v=18" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-96.png?v=18" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/favicon-192.png?v=18" type="image/png" sizes="180x180">
+<meta property="og:title" content="Terms &amp; Policies | Elitechnexus">
+<meta property="og:description" content="Security Policy, Terms of Service, and Privacy Policy for Elitechnexus LLC.">
+<meta property="og:image" content="/assets/images/elitechnexus-logo-transparent.png?v=14">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
+
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f5f8fb;
+    --panel: #ffffff;
+    --ink: #142033;
+    --muted: #4a6075;
+    --line: rgba(30, 60, 90, 0.14);
+    --accent: #0d9488;
+    --accent-2: #0284c7;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 45% at 8% 0%, rgba(14,165,233,.08), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 95% 8%, rgba(20,184,166,.07), transparent 50%),
+      linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { display: block; }
+
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px solid var(--line);
+  }
+  .top__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    font-family: Syne, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .top__brand:hover { text-decoration: none; color: var(--ink); }
+  .top__brand img { width: 2.1rem; height: 2.1rem; }
+  .top__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(.75rem, 2vw, 1.25rem);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .top__nav a {
+    color: #334155;
+    font-size: .92rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .top__nav a:hover { color: var(--accent); text-decoration: none; }
+  .top__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .65rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .9rem;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #0d9488, #0284c7);
+    text-decoration: none !important;
+  }
+
+  .container {
+    width: min(960px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding: clamp(3.25rem, 8vw, 5rem) 0 clamp(1.75rem, 4vw, 2.5rem);
+  }
+  .hero__eyebrow {
+    margin: 0 0 .75rem;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 650;
+  }
+  .hero h1 {
+    margin: 0 0 .9rem;
+    font-size: clamp(2.05rem, 4.8vw, 3.1rem);
+    line-height: 1.22;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #0f172a;
+  }
+  .hero h1 span {
+    display: inline-block;
+    background: linear-gradient(135deg, #0d9488, #0284c7 55%, #2563eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+    line-height: 1.55;
+    max-width: 58ch;
+  }
+
+  .vision {
+    margin: 0 0 1.75rem;
+    padding: 1.25rem 1.35rem;
+    border-radius: 1.1rem;
+    border: 1px solid rgba(13,148,136,.25);
+    background: linear-gradient(135deg, rgba(13,148,136,.08), rgba(2,132,199,.06));
+  }
+  .vision strong {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .vision p {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin: 0 0 2rem;
+  }
+  .toc a {
+    display: inline-flex;
+    padding: .45rem .85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #ffffff;
+    color: #1e293b;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  .toc a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  .section {
+    margin: 0 0 clamp(2rem, 5vw, 3rem);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+  }
+  .section h2 {
+    margin: 0 0 .85rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .section h3 {
+    margin: 1.35rem 0 .55rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .section p, .section li {
+    color: #334155;
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+  .section p { margin: 0 0 .95rem; max-width: 68ch; }
+  .section ul, .section ol {
+    margin: 0 0 .95rem;
+    padding-left: 1.2rem;
+    max-width: 68ch;
+  }
+  .section li { margin-bottom: .5rem; }
+  .section strong { color: #0f172a; }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem 1.5rem;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1rem, 4vw, 2rem) 2rem;
+    border-top: 1px solid var(--line);
+    color: #64748b;
+    font-size: .9rem;
+  }
+  .footer a { color: #64748b; }
+  .footer a:hover { color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .top__nav a:not(.top__cta) { display: none; }
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <a class="top__brand" href="/">
+      <img src="/assets/images/elitechnexus-logo.svg?v=14" alt="">
+      Elitechnexus
+    </a>
+    <nav class="top__nav">
+      <a href="/">Home</a>
+      <a href="/enterprise">Enterprise</a>
+      <a href="/contact">Contact</a>
+      <a href="/login#login">Login</a>
+      <a class="top__cta" href="/login">Get started</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Legal</p>
+      <h1>Terms &amp; <span>Policies</span></h1>
+      <p>Last updated: September 7, 2026. Elitechnexus LLC protects business-sensitive and personal information entrusted to us by candidates, clients, and partners.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="vision">
+      <strong>Security vision</strong>
+      <p>To keep Elitechnexus reliable, resilient, and ready against accidents, attacks, failures, and a constantly changing threat environment — so candidates, clients, and our team can operate with confidence.</p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <a href="#security">Security Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#contact-legal">Contact</a>
+    </nav>
+
+    <section class="section" id="security">
+      <h2>1. Security Policy</h2>
+      <p>Elitechnexus LLC (“Elitechnexus,” “we,” “us”) helps people and companies turn skills into full-time jobs, paid projects, and lasting income through proof-first placement. As part of that work, we may receive and process business-sensitive information — including personal data, professional profiles, hiring requirements, interview notes, and related communications. Protecting that information is essential to our clients’ interests, to candidates’ trust, and to our own operations.</p>
+      <p>This Security Policy explains our commitment to protect information and assets we own or are responsible for, and to maintain an efficient, safe, and secure working environment for Elitechnexus, our customers, partners, and the talent we support.</p>
+
+      <h3>1.1 Purpose and scope</h3>
+      <p>The purpose of this Policy is to set clear expectations for how Elitechnexus safeguards information across our website, internal tools, vendor systems, and day-to-day placement workflows. It covers:</p>
+      <ul>
+        <li>Candidate and client personal and professional information</li>
+        <li>Company hiring briefs, project scopes, and related business records</li>
+        <li>Account credentials, communications, and operational systems we use to deliver services</li>
+        <li>Devices, accounts, and access rights used by associates and authorized third parties</li>
+      </ul>
+      <p>This Policy applies to Elitechnexus LLC operations and to associates, contractors, business partners, and external parties who have access to our infrastructure, IT systems, or information resources.</p>
+
+      <h3>1.2 Security commitments</h3>
+      <p>Elitechnexus will apply a practical, layered security approach intended to ensure:</p>
+      <ul>
+        <li><strong>Protection of information and assets</strong> against known and emerging threats through physical, logical, personnel, and information-security controls (including cyber security)</li>
+        <li><strong>Responsible technology use</strong>, including AI-assisted tools where used in operations, with safeguards appropriate to the sensitivity of the data involved</li>
+        <li><strong>Compliance</strong> with applicable legal and regulatory requirements in the markets where we operate</li>
+        <li><strong>Business continuity</strong> so core placement and communication workflows can continue or recover in line with stakeholder obligations</li>
+        <li><strong>Clear ownership</strong> of security responsibilities for teams and individuals who handle candidate, client, or company data</li>
+        <li><strong>Awareness and competence</strong> so people with access understand how to handle information safely</li>
+        <li><strong>Reporting channels</strong> for associates and stakeholders to report security weaknesses, violations, suspected incidents, or service disruption</li>
+        <li><strong>Identify → Protect → Detect → Respond → Recover</strong> practices for security weaknesses and incidents</li>
+        <li><strong>Continuous improvement</strong> through periodic review of security performance against practical targets</li>
+        <li><strong>Third-party / supply-chain risk management</strong> for vendors and partners with access to our systems or information (including their personnel, where relevant)</li>
+      </ul>
+
+      <h3>1.3 How we protect information in practice</h3>
+      <ul>
+        <li><strong>Access control:</strong> Access to candidate and client records is limited to people who need it for their role. Accounts should use strong authentication where available.</li>
+        <li><strong>Least privilege:</strong> Permissions are granted based on job need and reviewed when roles change or engagements end.</li>
+        <li><strong>Secure communications:</strong> Prefer approved channels for sharing résumés, screening notes, and hiring briefs. Avoid sending sensitive credentials through unsecured messages.</li>
+        <li><strong>Vendor diligence:</strong> Tools used for email, scheduling, hosting, forms, or operations are selected with confidentiality and availability in mind.</li>
+        <li><strong>Data handling:</strong> Personal and hiring data should not be copied to personal devices or shared outside approved workflows without authorization.</li>
+        <li><strong>Incident readiness:</strong> Suspected breaches, lost devices, phishing, or unauthorized access should be reported promptly so we can contain and remediate.</li>
+      </ul>
+
+      <h3>1.4 Security Management System</h3>
+      <p>This Policy is supported by internal standards, procedures, and guidelines that form our Security Management practices. Relevant expectations are shared with stakeholders who help implement them. Security ownership sits with Elitechnexus leadership (including designated security and operations leads). Practices are reviewed periodically so they remain relevant to our operations and to evolving stakeholder expectations.</p>
+
+      <h3>1.5 Reporting and consequences</h3>
+      <p>If you believe you have found a security weakness, or if you suspect unauthorized access to Elitechnexus systems or data, contact us immediately using the details in Section 4 and put “Security” in the subject line. Good-faith reports help us protect everyone who trusts us with information.</p>
+      <p>Violations of this Policy — including unauthorized access, disclosure, or misuse of information — may result in removal of access, contract consequences, and other remedies permitted by law and by applicable agreements. Consequences apply equally to associates and to external parties with access rights.</p>
+    </section>
+
+    <section class="section" id="terms">
+      <h2>2. Terms of Service</h2>
+      <p>These Terms of Service (“Terms”) govern your access to elitechnexus.com and your use of Elitechnexus services, including full-time placement support, paid project matching, interview coaching, enterprise hiring support, and related career or recruiting workflows. By accessing the site or using our services, you agree to these Terms. If you do not agree, do not use the site or services.</p>
+
+      <h3>2.1 Who we are and what we do</h3>
+      <p>Elitechnexus LLC is a proof-first placement and career-support company. We connect global talent with US-facing opportunities and help companies hire vetted engineers for full-time roles and paid projects. Specific engagements (placement fees, contractor terms, coaching packages, enterprise programs) may be set out in a separate written agreement. Where a signed agreement conflicts with these website Terms, the signed agreement controls for that engagement.</p>
+
+      <h3>2.2 Eligibility</h3>
+      <ul>
+        <li>You must be at least 18 years old and legally able to enter a binding agreement.</li>
+        <li>If you use our services on behalf of a company, you represent that you have authority to bind that company to these Terms.</li>
+        <li>You must provide accurate registration, application, and contact information and keep it reasonably up to date.</li>
+      </ul>
+
+      <h3>2.3 Accounts and security of credentials</h3>
+      <p>If you create an account or receive login access, you are responsible for maintaining the confidentiality of your credentials and for activity that occurs under your account. Notify us promptly if you suspect unauthorized use. We may suspend or revoke access if we reasonably believe security, fraud, or Terms violations are involved.</p>
+
+      <h3>2.4 Services for candidates</h3>
+      <p>When you apply as talent, you authorize Elitechnexus to:</p>
+      <ul>
+        <li>Review your background, skills, availability, and target roles</li>
+        <li>Invite you to technical vetting such as live coding, architecture discussions, and structured screening</li>
+        <li>Provide interview coaching or preparation support where offered</li>
+        <li>Introduce you to employers or project clients when there appears to be a fit</li>
+        <li>Stay involved during early onboarding coordination where relevant</li>
+      </ul>
+      <p><strong>Important:</strong> Applying, completing screening, or receiving coaching does not guarantee interviews, offers, placement, project awards, visa outcomes, or income. Market demand, employer decisions, and your own readiness all affect results.</p>
+
+      <h3>2.5 Services for companies and clients</h3>
+      <p>When you engage Elitechnexus as a hiring company or project client, you may ask us to help scope roles or projects, present vetted candidates, coordinate interviews, and support onboarding communication. You remain responsible for your own hiring decisions, employment or contractor classification, workplace policies, and compliance with laws that apply to you.</p>
+      <p>Unless a separate contract says otherwise, candidate introductions are confidential and intended only for evaluating that opportunity. Do not redistribute candidate materials to unrelated third parties without our prior written consent and the candidate’s appropriate permission.</p>
+
+      <h3>2.6 Fees and payments</h3>
+      <p>Some services may be free to explore (for example browsing public pages or submitting an inquiry). Paid services — such as coaching packages, enterprise programs, or placement-related fees — will be described before you commit, either on the site, in an invoice, or in a written agreement. Unless stated otherwise, fees are non-refundable once work has substantially begun, except where required by law or expressly agreed in writing.</p>
+
+      <h3>2.7 Acceptable use</h3>
+      <p>You agree not to misuse the website or services. Prohibited conduct includes, without limitation:</p>
+      <ul>
+        <li>Submitting false identity, work history, skills, or company information</li>
+        <li>Impersonating another person or misrepresenting your affiliation</li>
+        <li>Scraping, crawling, or harvesting data from the site in bulk without permission</li>
+        <li>Attempting to probe, scan, or attack our systems or those of our providers</li>
+        <li>Uploading malware or interfering with site availability</li>
+        <li>Harassing Elitechnexus staff, candidates, or clients</li>
+        <li>Using our services for unlawful discrimination, fraud, or other illegal activity</li>
+        <li>Sharing confidential candidate or client materials outside approved workflows</li>
+      </ul>
+
+      <h3>2.8 User content</h3>
+      <p>You retain ownership of materials you submit (for example résumés, portfolios, or job descriptions). You grant Elitechnexus a non-exclusive license to use, store, and share that content as needed to provide the services you requested — including screening, introductions, and related coordination. You represent that you have the rights needed to submit the content and that it does not infringe others’ rights.</p>
+
+      <h3>2.9 Intellectual property</h3>
+      <p>The Elitechnexus name, logos, website design, text, graphics, and other site materials are owned by Elitechnexus LLC or our licensors. You may view public pages for personal or internal business evaluation. You may not copy, scrape, mirror, or redistribute our branding or site content for commercial use without prior written permission.</p>
+
+      <h3>2.10 Third-party services</h3>
+      <p>We may link to or use third-party tools (for example scheduling, email, chat, analytics, or login providers). Those services are governed by their own terms and privacy policies. Elitechnexus is not responsible for third-party outages, content, or practices outside our reasonable control.</p>
+
+      <h3>2.11 Disclaimers</h3>
+      <p>The website and services are provided on an “as is” and “as available” basis. To the fullest extent permitted by law, Elitechnexus disclaims all warranties, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the site will be uninterrupted, error-free, or free of harmful components, or that any particular placement or hiring outcome will occur.</p>
+      <p>Website content (including Docs) is informational and is not legal, tax, immigration, employment, or professional advice.</p>
+
+      <h3>2.12 Limitation of liability</h3>
+      <p>To the fullest extent permitted by law, Elitechnexus LLC and its team will not be liable for any indirect, incidental, special, consequential, exemplary, or lost-profit damages arising from your use of the site or services, even if advised of the possibility of such damages.</p>
+      <p>Our total liability for any claim relating to the website or these Terms is limited to the greater of (a) the fees you paid us for the specific service giving rise to the claim during the three (3) months before the claim, or (b) one hundred US dollars (USD $100) if you paid us nothing for that claim. Some jurisdictions do not allow certain limitations; in those cases, our liability is limited to the maximum extent permitted by law.</p>
+
+      <h3>2.13 Indemnity</h3>
+      <p>You agree to defend and indemnify Elitechnexus LLC against claims, losses, and expenses (including reasonable attorneys’ fees) arising from your misuse of the site, your submitted content, your hiring or employment decisions, or your breach of these Terms, except to the extent caused by our willful misconduct.</p>
+
+      <h3>2.14 Suspension and termination</h3>
+      <p>We may suspend or terminate access to the site or services if you violate these Terms, if required by law, or if continuing would create security, legal, or operational risk. You may stop using the site at any time. Sections that by nature should survive (including intellectual property, disclaimers, liability limits, and indemnity) will survive termination.</p>
+
+      <h3>2.15 Changes to these Terms</h3>
+      <p>We may update these Terms from time to time. The “Last updated” date at the top of this page will change when we do. Continued use of the site after an update means you accept the revised Terms. Material changes to paid engagements already under a signed contract will be handled as that contract requires.</p>
+
+      <h3>2.16 Governing law</h3>
+      <p>These Terms are governed by the laws of the United States and the State of Delaware, without regard to conflict-of-law rules, unless a signed agreement states otherwise. Courts in that jurisdiction may hear disputes arising from these Terms, subject to any non-waivable consumer protections that apply to you.</p>
+    </section>
+
+    <section class="section" id="privacy">
+      <h2>3. Privacy Policy</h2>
+      <p>This Privacy Policy explains how Elitechnexus LLC collects, uses, stores, shares, and protects personal information when you visit elitechnexus.com, contact us, create an account, apply as talent, or engage us as a hiring company or project client. It should be read together with our Security Policy above.</p>
+
+      <h3>3.1 Who this policy covers</h3>
+      <ul>
+        <li>Website visitors</li>
+        <li>Candidates and applicants seeking jobs, projects, or coaching</li>
+        <li>Company contacts and hiring managers</li>
+        <li>People who email, call, or book meetings with us</li>
+      </ul>
+
+      <h3>3.2 Information we collect</h3>
+      <p><strong>Information you provide directly</strong></p>
+      <ul>
+        <li>Identity and contact details: name, email, phone, company, role, and location preferences</li>
+        <li>Professional profile: résumé/CV content, skills, experience, education, portfolio links, availability, compensation expectations you choose to share</li>
+        <li>Screening and coaching data: live-coding results, architecture discussion notes, interview prep progress, and feedback you or we generate during vetting</li>
+        <li>Hiring intake: job descriptions, project scopes, seniority needs, timelines, budget ranges you disclose, and evaluation criteria</li>
+        <li>Messages and attachments you send through forms, email, chat, or meetings</li>
+      </ul>
+      <p><strong>Information collected automatically</strong></p>
+      <ul>
+        <li>Technical data such as IP address, browser type, device type, referring pages, and timestamps</li>
+        <li>Usage data such as pages viewed and approximate location derived from IP</li>
+        <li>Cookie or similar technology data needed for site function, security, and basic analytics (see Section 3.6)</li>
+      </ul>
+      <p><strong>Information from others</strong></p>
+      <ul>
+        <li>Referrals from partners or existing clients/candidates (where appropriate)</li>
+        <li>Public professional profiles you point us to, or publicly available information you ask us to consider</li>
+        <li>Feedback from interviewers or hiring teams after introductions you authorized</li>
+      </ul>
+
+      <h3>3.3 How we use information</h3>
+      <p>We use personal information to:</p>
+      <ul>
+        <li>Respond to inquiries and schedule meetings</li>
+        <li>Evaluate candidates and match them with roles or paid projects</li>
+        <li>Run proof-first screening and interview coaching</li>
+        <li>Coordinate introductions, interviews, and early onboarding communication</li>
+        <li>Operate, secure, troubleshoot, and improve our website and services</li>
+        <li>Send service messages (for example application status or meeting confirmations)</li>
+        <li>Send marketing communications where permitted, with a clear way to opt out</li>
+        <li>Detect fraud, abuse, and security incidents</li>
+        <li>Comply with legal obligations and enforce our agreements</li>
+      </ul>
+      <p>We process information based on one or more of the following, as applicable: your consent; performance of a contract or steps requested before a contract; our legitimate interests in operating a placement business securely and efficiently; and legal obligations.</p>
+
+      <h3>3.4 How we share information</h3>
+      <p>We may share information with:</p>
+      <ul>
+        <li><strong>Prospective employers or project clients</strong> when you apply, ask for introductions, or otherwise consent to sharing for a specific opportunity</li>
+        <li><strong>Service providers</strong> who help us with hosting, email, scheduling, forms, analytics, communications, or operations, under confidentiality expectations appropriate to the service</li>
+        <li><strong>Professional advisors</strong> (such as legal or accounting) when needed</li>
+        <li><strong>Authorities or other parties</strong> when required by law, legal process, or to protect rights, safety, and security</li>
+        <li><strong>Business transfer recipients</strong> if Elitechnexus is involved in a merger, acquisition, financing, or sale of assets</li>
+      </ul>
+      <p>We do <strong>not</strong> sell your personal information as a consumer data brokerage product. We also do not share candidate materials with unrelated companies for their independent marketing without an appropriate basis and purpose related to our services.</p>
+
+      <h3>3.5 International processing</h3>
+      <p>Elitechnexus works with global talent and US-facing employers. Your information may be processed in the United States and in other countries where we, our team, or our providers operate. Where required by law, we use appropriate safeguards for cross-border transfers.</p>
+
+      <h3>3.6 Cookies and similar technologies</h3>
+      <p>We may use cookies and similar technologies that are:</p>
+      <ul>
+        <li><strong>Essential</strong> for security, load balancing, or basic site function</li>
+        <li><strong>Analytics / performance</strong> to understand how pages are used so we can improve them</li>
+      </ul>
+      <p>You can control cookies through your browser settings. Blocking some cookies may affect site features. If we use additional non-essential cookies in the future, we will update this Policy and provide choices where required.</p>
+
+      <h3>3.7 Retention</h3>
+      <p>We keep information only as long as reasonably needed for the purposes described above, including:</p>
+      <ul>
+        <li>Active candidate and client relationship management</li>
+        <li>Follow-up on placements, projects, and coaching engagements</li>
+        <li>Security, dispute resolution, and legal compliance</li>
+        <li>Business records required by applicable law or contracts</li>
+      </ul>
+      <p>When information is no longer needed, we take steps to delete it or de-identify it, subject to backup and legal hold limitations.</p>
+
+      <h3>3.8 Security of personal data</h3>
+      <p>We use administrative and technical measures appropriate to the sensitivity of the data, consistent with our Security Policy. No method of transmission or storage is completely secure. Please use strong unique passwords, be cautious with phishing, and avoid sending highly sensitive secrets through unsecured channels.</p>
+
+      <h3>3.9 Your rights and choices</h3>
+      <p>Depending on your location, you may have rights to:</p>
+      <ul>
+        <li>Request access to personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion, subject to legal and operational limits</li>
+        <li>Object to or restrict certain processing</li>
+        <li>Withdraw consent where processing is based on consent</li>
+        <li>Opt out of non-essential marketing emails</li>
+      </ul>
+      <p>To exercise these rights, contact us using Section 4. We may need to verify your identity before fulfilling a request. You may also lodge a complaint with a data protection authority where applicable.</p>
+
+      <h3>3.10 Children’s privacy</h3>
+      <p>Our services are directed to adults seeking professional opportunities or hiring support. We do not knowingly collect personal information from children under 18. If you believe a child has provided us information, contact us and we will take appropriate steps to delete it.</p>
+
+      <h3>3.11 Changes to this Privacy Policy</h3>
+      <p>We may update this Privacy Policy periodically. When we do, we will revise the “Last updated” date on this page. Continued use of the site after an update means you acknowledge the revised Policy. If changes are material, we may provide additional notice where appropriate.</p>
+    </section>
+
+    <section class="section" id="contact-legal">
+      <h2>4. Contact</h2>
+      <p>For questions about these Terms &amp; Policies, privacy requests, security reports, or legal notices:</p>
+      <ul>
+        <li><strong>Company:</strong> Elitechnexus LLC</li>
+        <li><strong>Email:</strong> <a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:+13476697747">+1 (347) 669-7747</a></li>
+        <li><strong>Web:</strong> <a href="/contact">Contact form</a> · <a href="https://calendly.com/elitech-nexus/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a></li>
+      </ul>
+      <p>For suspected security weaknesses or incidents, email us with <strong>“Security”</strong> in the subject line and include as much detail as you can safely share (what happened, when, and which systems or accounts may be affected).</p>
+      <p>For privacy requests, email us with <strong>“Privacy Request”</strong> in the subject line and tell us what you need (access, correction, deletion, or opt-out).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Elitechnexus LLC · <a href="/terms">Terms &amp; Policies</a></span>
+    <span><a href="mailto:steven.miller@elitechnexus.com">steven.miller@elitechnexus.com</a> · <a href="tel:+13476697747">+1 (347) 669-7747</a></span>
+  </footer>
+</body>
+</html>
